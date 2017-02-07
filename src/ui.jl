@@ -1,7 +1,7 @@
 # Julia wrapper for header: /Volumes/BOOTCAMP/programs/compa_libs/libui/ui.h
 # Automatically generated using Clang.jl wrap_c, version 0.0.0
 
-@windows? (const thelib = "libui") : (const thelib = "libui")  # Name of libui shared lib.
+@static is_windows() (const thelib = "libui") : (const thelib = "libui")  # Name of libui shared lib.
 
 
 function uiInit(options::Ref{uiInitOptions})
