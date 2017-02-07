@@ -12,6 +12,10 @@ To install `Libui.jl`, do
 
   Pkg.clone("Libui")
 
+For Windows you can download the libui DLL from [here](http://w3.ualg.pt/~jluis/ftp/libui.dll.zip)
+and make sure that the lib *libui.dll* is found by Julia. For unix, I'm afraid the user will to have
+to build the libui shared library from source.
+
 ## Using
 
 I have only tested it on Windows and recreated the `controlgallery` examples by porting it directly from the `C` version.
