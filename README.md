@@ -5,7 +5,7 @@ GUI building, using the `libui` library: [https://github.com/andlabs/libui](http
 
 [![Build Status](https://travis-ci.org/jgoldfar/Libui.jl.svg?branch=master)](https://travis-ci.org/jgoldfar/Libui.jl)
 [![Coverage Status](https://coveralls.io/repos/github/jgoldfar/Libui.jl/badge.svg?branch=master)](https://coveralls.io/github/jgoldfar/Libui.jl?branch=master)
-[![codecov.io](http://codecov.io/github/jgoldfar/Libui.jl/coverage.svg?branch=master)](http://c    odecov.io/github/jgoldfar/Libui.jl?branch=master)
+[![codecov.io](http://codecov.io/github/jgoldfar/Libui.jl/coverage.svg?branch=master)](http://codecov.io/github/jgoldfar/Libui.jl?branch=master)
 
 ## Installation
 
