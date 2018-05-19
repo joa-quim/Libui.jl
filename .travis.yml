@@ -4,11 +4,27 @@ os:
   - linux
   - osx
 julia:
-  - release
+  - 0.6
   - nightly
 notifications:
   email: false
+
 # uncomment the following lines to override the default test script
 #script:
 #  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("Libui"); Pkg.test("Libui"; coverage=true)'
+
+## Allow failures on nightly julia
+## (tests will run but not make your overall status red)
+matrix:
+  allow_failures:
+    - julia: nightly
+
+## uncomment the following lines to override the default test script
+#script:
+#  - julia -e 'Pkg.clone(pwd()); Pkg.build("Libical"); Pkg.test("Libical"; coverage=true)'
+after_success:
+  # push coverage results to Coveralls
+  - julia -e 'cd(Pkg.dir("Libical")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  # push coverage results to Codecov
+  - julia -e 'cd(Pkg.dir("Libical")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
