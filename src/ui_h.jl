@@ -1,6 +1,6 @@
 # Automatically generated using Clang.jl wrap_c, version 0.0.0
 @static if VERSION < v"0.7-"
-    using Compat: Nothing
+	using Compat: Nothing
 end
 
 const OBJC_NEW_PROPERTIES = 1
@@ -50,24 +50,24 @@ const uiDrawDefaultMiterLimit = 10.0
 
 
 type uiInitOptions
-    Size::Csize_t
+	Size::Csize_t
 end
 
 type uiControl
-    Signature::UInt32
-    OSSignature::UInt32
-    TypeSignature::UInt32
-    Destroy::Ptr{Nothing}
-    Handle::Ptr{Nothing}
-    Parent::Ptr{Nothing}
-    SetParent::Ptr{Nothing}
-    Toplevel::Ptr{Nothing}
-    Visible::Ptr{Nothing}
-    Show::Ptr{Nothing}
-    Hide::Ptr{Nothing}
-    Enabled::Ptr{Nothing}
-    Enable::Ptr{Nothing}
-    Disable::Ptr{Nothing}
+	Signature::UInt32
+	OSSignature::UInt32
+	TypeSignature::UInt32
+	Destroy::Ptr{Nothing}
+	Handle::Ptr{Nothing}
+	Parent::Ptr{Nothing}
+	SetParent::Ptr{Nothing}
+	Toplevel::Ptr{Nothing}
+	Visible::Ptr{Nothing}
+	Show::Ptr{Nothing}
+	Hide::Ptr{Nothing}
+	Enabled::Ptr{Nothing}
+	Enable::Ptr{Nothing}
+	Disable::Ptr{Nothing}
 end
 
 type uiWindow
@@ -131,44 +131,44 @@ type uiArea
 end
 
 type uiAreaHandler
-    Draw::Ptr{Nothing}
-    MouseEvent::Ptr{Nothing}
-    MouseCrossed::Ptr{Nothing}
-    DragBroken::Ptr{Nothing}
-    KeyEvent::Ptr{Nothing}
+	Draw::Ptr{Nothing}
+	MouseEvent::Ptr{Nothing}
+	MouseCrossed::Ptr{Nothing}
+	DragBroken::Ptr{Nothing}
+	KeyEvent::Ptr{Nothing}
 end
 
 type uiDrawContext
 end
 
 type uiAreaDrawParams
-    Context::Ptr{uiDrawContext}
-    AreaWidth::Cdouble
-    AreaHeight::Cdouble
-    ClipX::Cdouble
-    ClipY::Cdouble
-    ClipWidth::Cdouble
-    ClipHeight::Cdouble
+	Context::Ptr{uiDrawContext}
+	AreaWidth::Cdouble
+	AreaHeight::Cdouble
+	ClipX::Cdouble
+	ClipY::Cdouble
+	ClipWidth::Cdouble
+	ClipHeight::Cdouble
 end
 
 type uiAreaMouseEvent
-    X::Cdouble
-    Y::Cdouble
-    AreaWidth::Cdouble
-    AreaHeight::Cdouble
-    Down::Culong
-    Up::Culong
-    Count::Culong
-    Modifiers::UInt32
-    Held1To64::UInt64
+	X::Cdouble
+	Y::Cdouble
+	AreaWidth::Cdouble
+	AreaHeight::Cdouble
+	Down::Culong
+	Up::Culong
+	Count::Culong
+	Modifiers::UInt32
+	Held1To64::UInt64
 end
 
 type uiAreaKeyEvent
-    Key::UInt8
-    ExtKey::UInt32
-    Modifier::UInt32
-    Modifiers::UInt32
-    Up::Cint
+	Key::UInt8
+	ExtKey::UInt32
+	Modifier::UInt32
+	Modifiers::UInt32
+	Up::Cint
 end
 
 type uiDrawPath
@@ -177,48 +177,48 @@ end
 const uiDrawBrushType = UInt32
 
 type uiDrawBrushGradientStop
-    Pos::Cdouble
-    R::Cdouble
-    G::Cdouble
-    B::Cdouble
-    A::Cdouble
+	Pos::Cdouble
+	R::Cdouble
+	G::Cdouble
+	B::Cdouble
+	A::Cdouble
 end
 
 type uiDrawBrush
-    Type::uiDrawBrushType
-    R::Cdouble
-    G::Cdouble
-    B::Cdouble
-    A::Cdouble
-    X0::Cdouble
-    Y0::Cdouble
-    X1::Cdouble
-    Y1::Cdouble
-    OuterRadius::Cdouble
-    Stops::Ptr{uiDrawBrushGradientStop}
-    NumStops::Csize_t
+	Type::uiDrawBrushType
+	R::Cdouble
+	G::Cdouble
+	B::Cdouble
+	A::Cdouble
+	X0::Cdouble
+	Y0::Cdouble
+	X1::Cdouble
+	Y1::Cdouble
+	OuterRadius::Cdouble
+	Stops::Ptr{uiDrawBrushGradientStop}
+	NumStops::Csize_t
 end
 
 const uiDrawLineCap = UInt32
 const uiDrawLineJoin = UInt32
 
 type uiDrawStrokeParams
-    Cap::UInt32
-    Join::UInt32
-    Thickness::Cdouble
-    MiterLimit::Cdouble
-    Dashes::Ptr{Cdouble}
-    NumDashes::Csize_t
-    DashPhase::Cdouble
+	Cap::UInt32
+	Join::UInt32
+	Thickness::Cdouble
+	MiterLimit::Cdouble
+	Dashes::Ptr{Cdouble}
+	NumDashes::Csize_t
+	DashPhase::Cdouble
 end
 
 type uiDrawMatrix
-    M11::Cdouble
-    M12::Cdouble
-    M21::Cdouble
-    M22::Cdouble
-    M31::Cdouble
-    M32::Cdouble
+	M11::Cdouble
+	M12::Cdouble
+	M21::Cdouble
+	M22::Cdouble
+	M31::Cdouble
+	M32::Cdouble
 end
 
 # begin enum ANONYMOUS_1
@@ -265,19 +265,19 @@ const uiDrawTextItalic = UInt32
 const uiDrawTextStretch = UInt32
 
 type uiDrawTextFontDescriptor
-    Family::Ptr{UInt8}
-    Size::Cdouble
-    Weight::UInt32
-    Italic::UInt32
-    Stretch::UInt32
+	Family::Ptr{UInt8}
+	Size::Cdouble
+	Weight::UInt32
+	Italic::UInt32
+	Stretch::UInt32
 end
 
 type uiDrawTextFontMetrics
-    Ascent::Cdouble
-    Descent::Cdouble
-    Leading::Cdouble
-    UnderlinePos::Cdouble
-    UnderlineThickness::Cdouble
+	Ascent::Cdouble
+	Descent::Cdouble
+	Leading::Cdouble
+	UnderlinePos::Cdouble
+	UnderlineThickness::Cdouble
 end
 
 # begin enum ANONYMOUS_5
