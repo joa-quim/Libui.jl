@@ -1,4 +1,7 @@
 # Automatically generated using Clang.jl wrap_c, version 0.0.0
+@static if VERSION < v"0.7-"
+    using Compat: Nothing
+end
 
 const OBJC_NEW_PROPERTIES = 1
 
@@ -96,39 +99,39 @@ const uiDrawDefaultMiterLimit = 10.0
 # Skipping MacroDefinition: uiFontButton ( this ) ( ( uiFontButton * ) ( this ) )
 # Skipping MacroDefinition: uiColorButton ( this ) ( ( uiColorButton * ) ( this ) )
 
-typealias ptrdiff_t Clong
-typealias size_t Culong
-typealias wchar_t Cint
+const ptrdiff_t = Clong
+const size_t = Culong
+const wchar_t = Cint
 
 type max_align_t
     __clang_max_align_nonce1::Clonglong
     __clang_max_align_nonce2::Float64
 end
 
-typealias int8_t UInt8
-typealias int16_t Int16
-typealias int32_t Cint
-typealias int64_t Clonglong
-typealias uint8_t Cuchar
-typealias uint16_t UInt16
-typealias uint32_t UInt32
-typealias uint64_t Culonglong
-typealias int_least8_t Int8
-typealias int_least16_t Int16
-typealias int_least32_t Int32
-typealias int_least64_t Int64
-typealias uint_least8_t UInt8
-typealias uint_least16_t UInt16
-typealias uint_least32_t UInt32
-typealias uint_least64_t UInt64
-typealias int_fast8_t Int8
-typealias int_fast16_t Int16
-typealias int_fast32_t Int32
-typealias int_fast64_t Int64
-typealias uint_fast8_t UInt8
-typealias uint_fast16_t UInt16
-typealias uint_fast32_t UInt32
-typealias uint_fast64_t UInt64
+const int8_t = UInt8
+const int16_t = Int16
+const int32_t = Cint
+const int64_t = Clonglong
+const uint8_t = Cuchar
+const uint16_t = UInt16
+const uint32_t = UInt32
+const uint64_t = Culonglong
+const int_least8_t = Int8
+const int_least16_t = Int16
+const int_least32_t = Int32
+const int_least64_t = Int64
+const uint_least8_t = UInt8
+const uint_least16_t = UInt16
+const uint_least32_t = UInt32
+const uint_least64_t = UInt64
+const int_fast8_t = Int8
+const int_fast16_t = Int16
+const int_fast32_t = Int32
+const int_fast64_t = Int64
+const uint_fast8_t = UInt8
+const uint_fast16_t = UInt16
+const uint_fast32_t = UInt32
+const uint_fast64_t = UInt64
 
 
 type uiInitOptions
@@ -139,17 +142,17 @@ type uiControl
     Signature::UInt32
     OSSignature::UInt32
     TypeSignature::UInt32
-    Destroy::Ptr{Void}
-    Handle::Ptr{Void}
-    Parent::Ptr{Void}
-    SetParent::Ptr{Void}
-    Toplevel::Ptr{Void}
-    Visible::Ptr{Void}
-    Show::Ptr{Void}
-    Hide::Ptr{Void}
-    Enabled::Ptr{Void}
-    Enable::Ptr{Void}
-    Disable::Ptr{Void}
+    Destroy::Ptr{Nothing}
+    Handle::Ptr{Nothing}
+    Parent::Ptr{Nothing}
+    SetParent::Ptr{Nothing}
+    Toplevel::Ptr{Nothing}
+    Visible::Ptr{Nothing}
+    Show::Ptr{Nothing}
+    Hide::Ptr{Nothing}
+    Enabled::Ptr{Nothing}
+    Enable::Ptr{Nothing}
+    Disable::Ptr{Nothing}
 end
 
 type uiWindow
@@ -213,11 +216,11 @@ type uiArea
 end
 
 type uiAreaHandler
-    Draw::Ptr{Void}
-    MouseEvent::Ptr{Void}
-    MouseCrossed::Ptr{Void}
-    DragBroken::Ptr{Void}
-    KeyEvent::Ptr{Void}
+    Draw::Ptr{Nothing}
+    MouseEvent::Ptr{Nothing}
+    MouseCrossed::Ptr{Nothing}
+    DragBroken::Ptr{Nothing}
+    KeyEvent::Ptr{Nothing}
 end
 
 type uiDrawContext
@@ -256,7 +259,7 @@ end
 type uiDrawPath
 end
 
-typealias uiDrawBrushType UInt32
+const uiDrawBrushType = UInt32
 
 type uiDrawBrushGradientStop
     Pos::Cdouble
@@ -281,8 +284,8 @@ type uiDrawBrush
     NumStops::Csize_t
 end
 
-typealias uiDrawLineCap UInt32
-typealias uiDrawLineJoin UInt32
+const uiDrawLineCap = UInt32
+const uiDrawLineJoin = UInt32
 
 type uiDrawStrokeParams
     Cap::UInt32
@@ -304,7 +307,7 @@ type uiDrawMatrix
 end
 
 # begin enum ANONYMOUS_1
-typealias ANONYMOUS_1 UInt32
+const ANONYMOUS_1 = UInt32
 const uiDrawBrushTypeSolid = (UInt32)(0)
 const uiDrawBrushTypeLinearGradient = (UInt32)(1)
 const uiDrawBrushTypeRadialGradient = (UInt32)(2)
@@ -312,23 +315,23 @@ const uiDrawBrushTypeImage = (UInt32)(3)
 # end enum ANONYMOUS_1
 
 # begin enum ANONYMOUS_2
-typealias ANONYMOUS_2 UInt32
+const ANONYMOUS_2 = UInt32
 const uiDrawLineCapFlat = (UInt32)(0)
 const uiDrawLineCapRound = (UInt32)(1)
 const uiDrawLineCapSquare = (UInt32)(2)
 # end enum ANONYMOUS_2
 
 # begin enum ANONYMOUS_3
-typealias ANONYMOUS_3 UInt32
+const ANONYMOUS_3 = UInt32
 const uiDrawLineJoinMiter = (UInt32)(0)
 const uiDrawLineJoinRound = (UInt32)(1)
 const uiDrawLineJoinBevel = (UInt32)(2)
 # end enum ANONYMOUS_3
 
-typealias uiDrawFillMode UInt32
+const uiDrawFillMode = UInt32
 
 # begin enum ANONYMOUS_4
-typealias ANONYMOUS_4 UInt32
+const ANONYMOUS_4 = UInt32
 const uiDrawFillModeWinding = (UInt32)(0)
 const uiDrawFillModeAlternate = (UInt32)(1)
 # end enum ANONYMOUS_4
@@ -342,9 +345,9 @@ end
 type uiDrawTextFont
 end
 
-typealias uiDrawTextWeight UInt32
-typealias uiDrawTextItalic UInt32
-typealias uiDrawTextStretch UInt32
+const uiDrawTextWeight = UInt32
+const uiDrawTextItalic = UInt32
+const uiDrawTextStretch = UInt32
 
 type uiDrawTextFontDescriptor
     Family::Ptr{UInt8}
@@ -363,7 +366,7 @@ type uiDrawTextFontMetrics
 end
 
 # begin enum ANONYMOUS_5
-typealias ANONYMOUS_5 UInt32
+const ANONYMOUS_5 = UInt32
 const uiDrawTextWeightThin = (UInt32)(0)
 const uiDrawTextWeightUltraLight = (UInt32)(1)
 const uiDrawTextWeightLight = (UInt32)(2)
@@ -378,14 +381,14 @@ const uiDrawTextWeightUltraHeavy = (UInt32)(10)
 # end enum ANONYMOUS_5
 
 # begin enum ANONYMOUS_6
-typealias ANONYMOUS_6 UInt32
+const ANONYMOUS_6 = UInt32
 const uiDrawTextItalicNormal = (UInt32)(0)
 const uiDrawTextItalicOblique = (UInt32)(1)
 const uiDrawTextItalicItalic = (UInt32)(2)
 # end enum ANONYMOUS_6
 
 # begin enum ANONYMOUS_7
-typealias ANONYMOUS_7 UInt32
+const ANONYMOUS_7 = UInt32
 const uiDrawTextStretchUltraCondensed = (UInt32)(0)
 const uiDrawTextStretchExtraCondensed = (UInt32)(1)
 const uiDrawTextStretchCondensed = (UInt32)(2)
@@ -398,7 +401,7 @@ const uiDrawTextStretchUltraExpanded = (UInt32)(8)
 # end enum ANONYMOUS_7
 
 # begin enum ANONYMOUS_8
-typealias ANONYMOUS_8 UInt32
+const ANONYMOUS_8 = UInt32
 const uiModifierCtrl = (UInt32)(1)
 const uiModifierAlt = (UInt32)(2)
 const uiModifierShift = (UInt32)(4)
@@ -406,7 +409,7 @@ const uiModifierSuper = (UInt32)(8)
 # end enum ANONYMOUS_8
 
 # begin enum ANONYMOUS_9
-typealias ANONYMOUS_9 UInt32
+const ANONYMOUS_9 = UInt32
 const uiExtKeyEscape = (UInt32)(1)
 const uiExtKeyInsert = (UInt32)(2)
 const uiExtKeyDelete = (UInt32)(3)
