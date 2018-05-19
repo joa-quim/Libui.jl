@@ -8,57 +8,6 @@ const OBJC_NEW_PROPERTIES = 1
 # Skipping MacroDefinition: NULL ( ( void * ) 0 )
 # Skipping MacroDefinition: offsetof ( t , d ) __builtin_offsetof ( t , d )
 
-const INT8_MAX = 127
-const INT16_MAX = 32767
-const INT32_MAX = 2147483647
-const INT64_MAX = 9223372036854775807
-const INT8_MIN = -128
-const INT16_MIN = -32768
-const INT32_MIN = -INT32_MAX - 1
-const INT64_MIN = -INT64_MAX - 1
-const UINT8_MAX = 255
-const UINT16_MAX = 65535
-const UINT32_MAX = 4294967295
-const UINT64_MAX = @int128_str("18446744073709551615")
-const INT_LEAST8_MIN = INT8_MIN
-const INT_LEAST16_MIN = INT16_MIN
-const INT_LEAST32_MIN = INT32_MIN
-const INT_LEAST64_MIN = INT64_MIN
-const INT_LEAST8_MAX = INT8_MAX
-const INT_LEAST16_MAX = INT16_MAX
-const INT_LEAST32_MAX = INT32_MAX
-const INT_LEAST64_MAX = INT64_MAX
-const UINT_LEAST8_MAX = UINT8_MAX
-const UINT_LEAST16_MAX = UINT16_MAX
-const UINT_LEAST32_MAX = UINT32_MAX
-const UINT_LEAST64_MAX = UINT64_MAX
-const INT_FAST8_MIN = INT8_MIN
-const INT_FAST16_MIN = INT16_MIN
-const INT_FAST32_MIN = INT32_MIN
-const INT_FAST64_MIN = INT64_MIN
-const INT_FAST8_MAX = INT8_MAX
-const INT_FAST16_MAX = INT16_MAX
-const INT_FAST32_MAX = INT32_MAX
-const INT_FAST64_MAX = INT64_MAX
-const UINT_FAST8_MAX = UINT8_MAX
-const UINT_FAST16_MAX = UINT16_MAX
-const UINT_FAST32_MAX = UINT32_MAX
-const UINT_FAST64_MAX = UINT64_MAX
-const INTPTR_MIN = INT64_MIN
-const INTPTR_MAX = INT64_MAX
-const UINTPTR_MAX = UINT64_MAX
-const INTMAX_MIN = INT64_MIN
-const INTMAX_MAX = INT64_MAX
-const UINTMAX_MAX = UINT64_MAX
-const PTRDIFF_MIN = INT64_MIN
-const PTRDIFF_MAX = INT64_MAX
-const SIZE_MAX = UINT64_MAX
-const RSIZE_MAX = SIZE_MAX >> 1
-const WINT_MIN = INT32_MIN
-const WINT_MAX = INT32_MAX
-const SIG_ATOMIC_MIN = INT32_MIN
-const SIG_ATOMIC_MAX = INT32_MAX
-
 # Skipping MacroDefinition: INT8_C ( v ) ( v )
 # Skipping MacroDefinition: INT16_C ( v ) ( v )
 # Skipping MacroDefinition: INT32_C ( v ) ( v )
@@ -98,40 +47,6 @@ const uiDrawDefaultMiterLimit = 10.0
 
 # Skipping MacroDefinition: uiFontButton ( this ) ( ( uiFontButton * ) ( this ) )
 # Skipping MacroDefinition: uiColorButton ( this ) ( ( uiColorButton * ) ( this ) )
-
-const ptrdiff_t = Clong
-const size_t = Culong
-const wchar_t = Cint
-
-type max_align_t
-    __clang_max_align_nonce1::Clonglong
-    __clang_max_align_nonce2::Float64
-end
-
-const int8_t = UInt8
-const int16_t = Int16
-const int32_t = Cint
-const int64_t = Clonglong
-const uint8_t = Cuchar
-const uint16_t = UInt16
-const uint32_t = UInt32
-const uint64_t = Culonglong
-const int_least8_t = Int8
-const int_least16_t = Int16
-const int_least32_t = Int32
-const int_least64_t = Int64
-const uint_least8_t = UInt8
-const uint_least16_t = UInt16
-const uint_least32_t = UInt32
-const uint_least64_t = UInt64
-const int_fast8_t = Int8
-const int_fast16_t = Int16
-const int_fast32_t = Int32
-const int_fast64_t = Int64
-const uint_fast8_t = UInt8
-const uint_fast16_t = UInt16
-const uint_fast32_t = UInt32
-const uint_fast64_t = UInt64
 
 
 type uiInitOptions
