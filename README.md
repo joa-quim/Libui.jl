@@ -3,21 +3,16 @@
 GUI building, using the `libui` library: [https://github.com/andlabs/libui](https://github.com/andlabs/libui)
 <br/>
 
-[![Build Status](https://travis-ci.org/jgoldfar/Libui.jl.svg?branch=master)](https://travis-ci.org/jgoldfar/Libui.jl)
-[![Coverage Status](https://coveralls.io/repos/github/jgoldfar/Libui.jl/badge.svg?branch=master)](https://coveralls.io/github/jgoldfar/Libui.jl?branch=master)
-[![codecov.io](http://codecov.io/github/jgoldfar/Libui.jl/coverage.svg?branch=master)](http://codecov.io/github/jgoldfar/Libui.jl?branch=master)
+[![Build Status](https://travis-ci.org/joa-quim/Libui.jl.svg?branch=master)](https://travis-ci.org/joa-quim/Libui.jl)
+[![Coverage Status](https://coveralls.io/repos/github/joa-quim/Libui.jl/badge.svg?branch=master)](https://coveralls.io/github/joa-quim/Libui.jl?branch=master)
+[![codecov.io](http://codecov.io/github/joa-quim/Libui.jl/coverage.svg?branch=master)](http://codecov.io/github/joa-quim/Libui.jl?branch=master)
 
 ## Installation
-
-Prior to using this wrapper, you must install `libui` on your computer.
 
 To install `Libui.jl`, do
 
     Pkg.clone("Libui")
-
-For Windows you can download the libui DLL from [here](http://w3.ualg.pt/~jluis/ftp/libui.dll.zip)
-and make sure that the lib *libui.dll* is found by Julia. For unix, I'm afraid the user will to have
-to build the libui shared library from source.
+    Pkg.build("Libui")
 
 ## Using
 
