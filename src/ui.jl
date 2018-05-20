@@ -1,5 +1,5 @@
 # Julia wrapper for header: /Volumes/BOOTCAMP/programs/compa_libs/libui/ui.h
-# Automatically generated using Clang.jl wrap_c, version 0.0.0 
+# Automatically generated using Clang.jl wrap_c, version 0.0.0
 
 function uiInit(options::Ref{uiInitOptions})
 	ccall((:uiInit,libui),Ptr{UInt8},(Ptr{uiInitOptions},),options)
