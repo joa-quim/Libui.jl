@@ -4,6 +4,16 @@ using Libui
 else
     using Base.Test
 end
+@static if VERSION < v"0.7-"
+	using Compat: Nothing
+end
 
-# write your own tests here
-@test 1 == 1
+@testset "Init and Uninit" begin
+o = Libui.uiInitOptions(0)
+err = uiInit(Ref(o))
+
+@show err
+@show o
+
+uiUninit()
+end
