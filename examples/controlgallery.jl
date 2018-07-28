@@ -126,7 +126,7 @@ end
 # ---------------------------------------------------------------------------------------------
 function onSpinboxChanged(spinbox::Ptr{uiSpinbox})
 	update(uiSpinboxValue(spinbox))
-	return
+	return nothing
 end
 
 # ---------------------------------------------------------------------------------------------
