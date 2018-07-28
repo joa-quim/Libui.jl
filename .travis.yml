@@ -13,6 +13,8 @@ julia:
 notifications:
   email: false
 
+sudo: required
+
 addons:
   apt:
     packages:
@@ -26,12 +28,17 @@ matrix:
   allow_failures:
     - julia: nightly
 
+before_script:
+  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+  - "export DISPLAY=:99.0"
+  - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then GUITESTCMD="xvfb-run julia"; else GUITESTCMD="xvfb-run julia"; fi
+  - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo ok )& fi
+  - julia -e 'Pkg.clone(pwd()); Pkg.build("Libui");'
+
 ##uncomment the following lines to override the default test script
 script:
-  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - if [ $TRAVIS_OS_NAME = "linux" ]; then GUITESTCMD="xvfb-run julia"; else GUITESTCMD="julia"; fi
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("Libui"); Pkg.test("Libui"; coverage=true)'
-  - if [ $TRAVIS_OS_NAME = "linux" ]; then $GUITESTCMD examples/controlgallery.jl; fi
+  - ${GUITESTCMD} -e 'Pkg.test("Libui"; coverage=true)'
+  - ${GUITESTCMD} examples/controlgallery.jl
 
 after_success:
   # push coverage results to Coveralls
