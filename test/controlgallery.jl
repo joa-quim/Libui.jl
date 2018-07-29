@@ -3,14 +3,20 @@ using Libui
 	using Compat: Nothing
 end
 
-const progressbar = uiNewProgressBar()
-const spinbox = uiNewSpinbox(0, 100)
-const slider = uiNewSlider(0, 100)
-
 
 function controlgallery()
 	o = Libui.uiInitOptions(0)
 	err = uiInit(Ref(o))
+
+	progressbar = uiNewProgressBar()
+	spinbox = uiNewSpinbox(0, 100)
+	slider = uiNewSlider(0, 100)
+
+	function update(value::Integer)
+		uiSpinboxSetValue(spinbox, value)
+		uiSliderSetValue(slider, value)
+		uiProgressBarSetValue(progressbar, value)
+	end
 
 	menu = uiNewMenu("File")
 	item = uiMenuAppendItem(menu, "Open")
@@ -31,9 +37,9 @@ function controlgallery()
 	item = uiMenuAppendItem(menu, "Help")
 	item = uiMenuAppendAboutItem(menu)
 
-	mainwin = uiNewWindow("libui Control Gallery", 640, 480, 1)
+	mainwin = newWindow("libui Control Gallery", 640, 480, 1)
 	uiWindowSetMargined(mainwin, 1)
-	uiWindowOnClosing(mainwin, cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},)), C_NULL)
+	
 
 	box = uiNewVerticalBox()
 	uiBoxSetPadded(box, 1)
@@ -118,8 +124,11 @@ function controlgallery()
 	uiBoxAppend(inner2, uiControl_(tab), 1)
 
 	uiControlShow(convert(Ptr{uiControl}, mainwin))
-	uiMain()
-	uiUninit()
+	
+	Libui.uiMainSteps()
+	Libui.uiMainStep(0)
+	# uiUninit()
+	# println("after uiUninit()")
 end
 
 
@@ -158,9 +167,4 @@ function saveClicked(mainwin::Ptr{uiWindow})
 	uiFreeText(filename)
 end
 
-# ---------------------------------------------------------------------------------------------
-function update(value::Integer)
-	uiSpinboxSetValue(spinbox, value)
-	uiSliderSetValue(slider, value)
-	uiProgressBarSetValue(progressbar, value)
-end
+controlgallery()
