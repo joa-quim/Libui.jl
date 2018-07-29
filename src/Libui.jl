@@ -94,11 +94,11 @@ end
 const shouldQuitPtr = cfunction(shouldQuit, Ptr{Nothing}, (Ptr{uiWindow},))
 
 # ---------------------------------------------------------------------------------------------
-function onClosing(mainwin::Ptr{uiWindow})
+function onClosing(mainwin::Ptr{uiWindow}, data::Ptr{Nothing})
 	uiQuit()
 	return C_NULL
 end
-const onClosingPtr = cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},))
+const onClosingPtr = cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},Ptr{Nothing}))
 
 function newWindow(args...)
 	wPtr = uiNewWindow(args...)
