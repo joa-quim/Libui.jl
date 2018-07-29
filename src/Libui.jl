@@ -1,4 +1,4 @@
-#VERSION >= v"0.4.0-dev+6521" && __precompile__()
+VERSION >= v"0.4.0-dev+6521" && __precompile__()
 module Libui
 
 const depsfile = joinpath(dirname(dirname(@__FILE__)), "deps", "deps.jl")
@@ -74,7 +74,8 @@ export
 	uiWindow,
 	uiOnShouldQuit,
 # Non C-wrapper functions
-	uiControl_, shouldQuit, onClosing
+	uiControl_, shouldQuit, onClosing,
+	newWindow
 
 
 include("ui_h.jl")
@@ -87,15 +88,23 @@ end
 
 # ---------------------------------------------------------------------------------------------
 function shouldQuit(mainwin::Ptr{uiWindow})
-	uiControlDestroy(convert(Ptr{uiControl}, mainwin))
+	uiControlDestroy(uiControl_(mainwin))
 	return C_NULL
 end
+const shouldQuitPtr = cfunction(shouldQuit, Ptr{Nothing}, (Ptr{uiWindow},))
 
 # ---------------------------------------------------------------------------------------------
 function onClosing(mainwin::Ptr{uiWindow})
-	uiControlDestroy(convert(Ptr{uiControl}, mainwin))
 	uiQuit()
 	return C_NULL
+end
+const onClosingPtr = cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},))
+
+function newWindow(args...)
+	wPtr = uiNewWindow(args...)
+	uiWindowOnClosing(wPtr, onClosingPtr, C_NULL)
+	uiOnShouldQuit(shouldQuitPtr, convert(Ptr{Nothing}, wPtr))
+	wPtr
 end
 
 
