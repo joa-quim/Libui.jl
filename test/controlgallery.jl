@@ -5,9 +5,6 @@ end
 
 
 function controlgallery()
-	o = Libui.uiInitOptions(0)
-	err = uiInit(Ref(o))
-
 	progressbar = uiNewProgressBar()
 	spinbox = uiNewSpinbox(0, 100)
 	slider = uiNewSlider(0, 100)
@@ -24,7 +21,6 @@ function controlgallery()
 	item = uiMenuAppendItem(menu, "Save")
 	uiMenuItemOnClicked(item, cfunction(saveClicked, Nothing, (Ptr{uiWindow},)), C_NULL)
 	item = uiMenuAppendQuitItem(menu)
-	uiOnShouldQuit(cfunction(shouldQuit, Ptr{Nothing}, (Ptr{uiWindow},)), C_NULL)
 
 	menu = uiNewMenu("Edit")
 	item = uiMenuAppendCheckItem(menu, "Checkable Item")
@@ -43,11 +39,11 @@ function controlgallery()
 
 	box = uiNewVerticalBox()
 	uiBoxSetPadded(box, 1)
-	uiWindowSetChild(mainwin, convert(Ptr{uiControl}, box))
+	uiWindowSetChild(mainwin, uiControl_(box))
 
 	hbox = uiNewHorizontalBox()
 	uiBoxSetPadded(hbox, 1)
-	uiBoxAppend(box, convert(Ptr{uiControl}, hbox), 1)
+	uiBoxAppend(box, uiControl_(hbox), 1)
 
 	group = uiNewGroup("Basic Controls")
 	uiGroupSetMargined(group, 1)
@@ -123,12 +119,11 @@ function controlgallery()
 	uiTabAppend(tab, "Page 3", uiControl_(uiNewHorizontalBox()))
 	uiBoxAppend(inner2, uiControl_(tab), 1)
 
-	uiControlShow(convert(Ptr{uiControl}, mainwin))
+	uiControlShow(uiControl_(mainwin))
 	
 	Libui.uiMainSteps()
 	Libui.uiMainStep(0)
-	# uiUninit()
-	# println("after uiUninit()")
+	println("after uiMainStep()")
 end
 
 
@@ -167,4 +162,4 @@ function saveClicked(mainwin::Ptr{uiWindow})
 	uiFreeText(filename)
 end
 
-controlgallery()
+Libui.with_ui(controlgallery)
