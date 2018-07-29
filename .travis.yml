@@ -38,7 +38,6 @@ before_script:
 ##uncomment the following lines to override the default test script
 script:
   - ${GUITESTCMD} -e 'Pkg.test("Libui"; coverage=true)'
-  - ${GUITESTCMD} --code-coverage examples/controlgallery.jl
 
 after_success:
   # push coverage results to Coveralls
