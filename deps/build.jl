@@ -6,11 +6,11 @@ end
 @BinDeps.setup
 
 const libui = library_dependency("libui")
-const libuiVer = "3.5"
+const libuiVer = "4"
 const libuiFilebase = "alpha$(libuiVer)"
 
 provides(Sources,
-         URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/$(libuiFilebase).tgz"),
+         URI("https://github.com/andlabs/libui/archive/$(libuiFilebase).tar.gz"),
          libui)
 
 const prefix = joinpath(BinDeps.depsdir(libui), "usr")
