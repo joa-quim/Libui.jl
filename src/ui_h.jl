@@ -64,24 +64,24 @@ const uiForEachStop = (UInt32)(1)
 # end enum ANONYMOUS_1
 
 mutable struct uiInitOptions
-    Size::Csize_t
+	Size::Csize_t
 end
 
 mutable struct uiControl
-    Signature::UInt32
-    OSSignature::UInt32
-    TypeSignature::UInt32
-    Destroy::Ptr{Nothing}
-    Handle::Ptr{Nothing}
-    Parent::Ptr{Nothing}
-    SetParent::Ptr{Nothing}
-    Toplevel::Ptr{Nothing}
-    Visible::Ptr{Nothing}
-    Show::Ptr{Nothing}
-    Hide::Ptr{Nothing}
-    Enabled::Ptr{Nothing}
-    Enable::Ptr{Nothing}
-    Disable::Ptr{Nothing}
+	Signature::UInt32
+	OSSignature::UInt32
+	TypeSignature::UInt32
+	Destroy::Ptr{Nothing}
+	Handle::Ptr{Nothing}
+	Parent::Ptr{Nothing}
+	SetParent::Ptr{Nothing}
+	Toplevel::Ptr{Nothing}
+	Visible::Ptr{Nothing}
+	Show::Ptr{Nothing}
+	Hide::Ptr{Nothing}
+	Enabled::Ptr{Nothing}
+	Enable::Ptr{Nothing}
+	Disable::Ptr{Nothing}
 end
 
 mutable struct uiWindow
@@ -148,48 +148,48 @@ mutable struct uiArea
 end
 
 mutable struct uiAreaHandler
-    Draw::Ptr{Nothing}
-    MouseEvent::Ptr{Nothing}
-    MouseCrossed::Ptr{Nothing}
-    DragBroken::Ptr{Nothing}
-    KeyEvent::Ptr{Nothing}
+	Draw::Ptr{Nothing}
+	MouseEvent::Ptr{Nothing}
+	MouseCrossed::Ptr{Nothing}
+	DragBroken::Ptr{Nothing}
+	KeyEvent::Ptr{Nothing}
 end
 
 mutable struct uiDrawContext
 end
 
 mutable struct uiAreaDrawParams
-    Context::Ptr{uiDrawContext}
-    AreaWidth::Cdouble
-    AreaHeight::Cdouble
-    ClipX::Cdouble
-    ClipY::Cdouble
-    ClipWidth::Cdouble
-    ClipHeight::Cdouble
+	Context::Ptr{uiDrawContext}
+	AreaWidth::Cdouble
+	AreaHeight::Cdouble
+	ClipX::Cdouble
+	ClipY::Cdouble
+	ClipWidth::Cdouble
+	ClipHeight::Cdouble
 end
 
 const uiModifiers = UInt32
 
 mutable struct uiAreaMouseEvent
-    X::Cdouble
-    Y::Cdouble
-    AreaWidth::Cdouble
-    AreaHeight::Cdouble
-    Down::Cint
-    Up::Cint
-    Count::Cint
-    Modifiers::uiModifiers
-    Held1To64::UInt64
+	X::Cdouble
+	Y::Cdouble
+	AreaWidth::Cdouble
+	AreaHeight::Cdouble
+	Down::Cint
+	Up::Cint
+	Count::Cint
+	Modifiers::uiModifiers
+	Held1To64::UInt64
 end
 
 const uiExtKey = UInt32
 
 mutable struct uiAreaKeyEvent
-    Key::UInt8
-    ExtKey::uiExtKey
-    Modifier::uiModifiers
-    Modifiers::uiModifiers
-    Up::Cint
+	Key::UInt8
+	ExtKey::uiExtKey
+	Modifier::uiModifiers
+	Modifiers::uiModifiers
+	Up::Cint
 end
 
 const uiWindowResizeEdge = UInt32
@@ -212,48 +212,48 @@ end
 const uiDrawBrushType = UInt32
 
 mutable struct uiDrawBrushGradientStop
-    Pos::Cdouble
-    R::Cdouble
-    G::Cdouble
-    B::Cdouble
-    A::Cdouble
+	Pos::Cdouble
+	R::Cdouble
+	G::Cdouble
+	B::Cdouble
+	A::Cdouble
 end
 
 mutable struct uiDrawBrush
-    Type::uiDrawBrushType
-    R::Cdouble
-    G::Cdouble
-    B::Cdouble
-    A::Cdouble
-    X0::Cdouble
-    Y0::Cdouble
-    X1::Cdouble
-    Y1::Cdouble
-    OuterRadius::Cdouble
-    Stops::Ptr{uiDrawBrushGradientStop}
-    NumStops::Csize_t
+	Type::uiDrawBrushType
+	R::Cdouble
+	G::Cdouble
+	B::Cdouble
+	A::Cdouble
+	X0::Cdouble
+	Y0::Cdouble
+	X1::Cdouble
+	Y1::Cdouble
+	OuterRadius::Cdouble
+	Stops::Ptr{uiDrawBrushGradientStop}
+	NumStops::Csize_t
 end
 
 const uiDrawLineCap = UInt32
 const uiDrawLineJoin = UInt32
 
 mutable struct uiDrawStrokeParams
-    Cap::uiDrawLineCap
-    Join::uiDrawLineJoin
-    Thickness::Cdouble
-    MiterLimit::Cdouble
-    Dashes::Ptr{Cdouble}
-    NumDashes::Csize_t
-    DashPhase::Cdouble
+	Cap::uiDrawLineCap
+	Join::uiDrawLineJoin
+	Thickness::Cdouble
+	MiterLimit::Cdouble
+	Dashes::Ptr{Cdouble}
+	NumDashes::Csize_t
+	DashPhase::Cdouble
 end
 
 mutable struct uiDrawMatrix
-    M11::Cdouble
-    M12::Cdouble
-    M21::Cdouble
-    M22::Cdouble
-    M31::Cdouble
-    M32::Cdouble
+	M11::Cdouble
+	M12::Cdouble
+	M21::Cdouble
+	M22::Cdouble
+	M31::Cdouble
+	M32::Cdouble
 end
 
 # begin enum ANONYMOUS_3
@@ -379,11 +379,11 @@ end
 const uiAttributedStringForEachAttributeFunc = Ptr{Nothing}
 
 mutable struct uiFontDescriptor
-    Family::Cstring
-    Size::Cdouble
-    Weight::uiTextWeight
-    Italic::uiTextItalic
-    Stretch::uiTextStretch
+	Family::Cstring
+	Size::Cdouble
+	Weight::uiTextWeight
+	Italic::uiTextItalic
+	Stretch::uiTextStretch
 end
 
 mutable struct uiDrawTextLayout
@@ -399,10 +399,10 @@ const uiDrawTextAlignRight = (UInt32)(2)
 # end enum ANONYMOUS_13
 
 mutable struct uiDrawTextLayoutParams
-    String::Ptr{uiAttributedString}
-    DefaultFont::Ptr{uiFontDescriptor}
-    Width::Cdouble
-    Align::uiDrawTextAlign
+	String::Ptr{uiAttributedString}
+	DefaultFont::Ptr{uiFontDescriptor}
+	Width::Cdouble
+	Align::uiDrawTextAlign
 end
 
 mutable struct uiFontButton
@@ -508,20 +508,20 @@ mutable struct uiTableModel
 end
 
 mutable struct uiTableModelHandler
-    NumColumns::Ptr{Nothing}
-    ColumnType::Ptr{Nothing}
-    NumRows::Ptr{Nothing}
-    CellValue::Ptr{Nothing}
-    SetCellValue::Ptr{Nothing}
+	NumColumns::Ptr{Nothing}
+	ColumnType::Ptr{Nothing}
+	NumRows::Ptr{Nothing}
+	CellValue::Ptr{Nothing}
+	SetCellValue::Ptr{Nothing}
 end
 
 mutable struct uiTableTextColumnOptionalParams
-    ColorModelColumn::Cint
+	ColorModelColumn::Cint
 end
 
 mutable struct uiTableParams
-    Model::Ptr{uiTableModel}
-    RowBackgroundColorModelColumn::Cint
+	Model::Ptr{uiTableModel}
+	RowBackgroundColorModelColumn::Cint
 end
 
 mutable struct uiTable
