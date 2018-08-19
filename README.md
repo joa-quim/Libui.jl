@@ -1,6 +1,6 @@
 ## Julia interface to the `libui` GUI library
 
-GUI building, using the `libui` library: [https://github.com/andlabs/libui](https://github.com/andlabs/libui)
+GUI building, using the `libui` library: [https://github.com/andlabs/libui](https://github.com/andlabs/libui) version `alpha4`.
 <br/>
 
 [![Build Status](https://travis-ci.org/joa-quim/Libui.jl.svg?branch=master)](https://travis-ci.org/joa-quim/Libui.jl)
