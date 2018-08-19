@@ -10,7 +10,7 @@ const libuiVer = "4"
 const libuiFilebase = "alpha$(libuiVer)"
 
 provides(Sources,
-         URI("https://github.com/andlabs/libui/archive/$(libuiFilebase).tar.gz"),
+         URI("http://w3.ualg.pt/%7Ejluis/t/$(libuiFilebase).tar.gz"),
          libui)
 
 const prefix = joinpath(BinDeps.depsdir(libui), "usr")
