@@ -1,694 +1,1043 @@
-# Julia wrapper for header: /Volumes/BOOTCAMP/programs/compa_libs/libui/ui.h
+# Julia wrapper for header: /Users/jgoldfar/Documents/misc/julia/Libui/src/../deps/src/ui.h
 # Automatically generated using Clang.jl wrap_c, version 0.0.0
 
-function uiInit(options::Ref{uiInitOptions})
-	ccall((:uiInit,libui),Ptr{UInt8},(Ptr{uiInitOptions},),options)
+
+function uiInit(options)
+    ccall((:uiInit, libui), Cstring, (Ptr{uiInitOptions},), options)
 end
 
 function uiUninit()
-	ccall((:uiUninit,libui),Nothing,())
+    ccall((:uiUninit, libui), Nothing, ())
 end
 
 function uiFreeInitError(err)
-	ccall((:uiFreeInitError,libui),Nothing,(Ptr{UInt8},),err)
+    ccall((:uiFreeInitError, libui), Nothing, (Cstring,), err)
 end
 
 function uiMain()
-	ccall((:uiMain,libui),Nothing,())
+    ccall((:uiMain, libui), Nothing, ())
 end
 
-function uiMainStep(wait::Integer)
-	ccall((:uiMainStep,libui),Cint,(Cint,),wait)
+function uiMainSteps()
+    ccall((:uiMainSteps, libui), Nothing, ())
+end
+
+function uiMainStep(wait::Cint)
+    ccall((:uiMainStep, libui), Cint, (Cint,), wait)
 end
 
 function uiQuit()
-	ccall((:uiQuit,libui),Nothing,())
+    ccall((:uiQuit, libui), Nothing, ())
 end
 
-function uiQueueMain(f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiQueueMain,libui),Nothing,(Ptr{Nothing},Ptr{Nothing}),f,data)
+function uiQueueMain(f, data)
+    ccall((:uiQueueMain, libui), Nothing, (Ptr{Void}, Ptr{Void}), f, data)
 end
 
-function uiOnShouldQuit(f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiOnShouldQuit,libui),Nothing,(Ptr{Nothing},Ptr{Nothing}),f,data)
+function uiTimer(milliseconds::Cint, f, data)
+    ccall((:uiTimer, libui), Nothing, (Cint, Ptr{Void}, Ptr{Void}), milliseconds, f, data)
+end
+
+function uiOnShouldQuit(f, data)
+    ccall((:uiOnShouldQuit, libui), Nothing, (Ptr{Void}, Ptr{Void}), f, data)
 end
 
 function uiFreeText(text)
-	ccall((:uiFreeText,libui),Nothing,(Ptr{UInt8},),text)
+    ccall((:uiFreeText, libui), Nothing, (Cstring,), text)
 end
 
-function uiControlDestroy(arg1::Ptr{uiControl})
-	ccall((:uiControlDestroy,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiControlDestroy(arg1)
+    ccall((:uiControlDestroy, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiControlHandle(arg1::Ptr{uiControl})
-	ccall((:uiControlHandle,libui),Csize_t,(Ptr{uiControl},),arg1)
+function uiControlHandle(arg1)
+    ccall((:uiControlHandle, libui), Csize_t, (Ptr{uiControl},), arg1)
 end
 
-function uiControlParent(arg1::Ptr{uiControl})
-	ccall((:uiControlParent,libui),Ptr{uiControl},(Ptr{uiControl},),arg1)
+function uiControlParent(arg1)
+    ccall((:uiControlParent, libui), Ptr{uiControl}, (Ptr{uiControl},), arg1)
 end
 
-function uiControlSetParent(arg1::Ptr{uiControl},arg2::Ptr{uiControl})
-	ccall((:uiControlSetParent,libui),Nothing,(Ptr{uiControl},Ptr{uiControl}),arg1,arg2)
+function uiControlSetParent(arg1, arg2)
+    ccall((:uiControlSetParent, libui), Nothing, (Ptr{uiControl}, Ptr{uiControl}), arg1, arg2)
 end
 
-function uiControlToplevel(arg1::Ptr{uiControl})
-	ccall((:uiControlToplevel,libui),Cint,(Ptr{uiControl},),arg1)
+function uiControlToplevel(arg1)
+    ccall((:uiControlToplevel, libui), Cint, (Ptr{uiControl},), arg1)
 end
 
-function uiControlVisible(arg1::Ptr{uiControl})
-	ccall((:uiControlVisible,libui),Cint,(Ptr{uiControl},),arg1)
+function uiControlVisible(arg1)
+    ccall((:uiControlVisible, libui), Cint, (Ptr{uiControl},), arg1)
 end
 
-function uiControlShow(arg1::Ptr{uiControl})
-	ccall((:uiControlShow,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiControlShow(arg1)
+    ccall((:uiControlShow, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiControlHide(arg1::Ptr{uiControl})
-	ccall((:uiControlHide,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiControlHide(arg1)
+    ccall((:uiControlHide, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiControlEnabled(arg1::Ptr{uiControl})
-	ccall((:uiControlEnabled,libui),Cint,(Ptr{uiControl},),arg1)
+function uiControlEnabled(arg1)
+    ccall((:uiControlEnabled, libui), Cint, (Ptr{uiControl},), arg1)
 end
 
-function uiControlEnable(arg1::Ptr{uiControl})
-	ccall((:uiControlEnable,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiControlEnable(arg1)
+    ccall((:uiControlEnable, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiControlDisable(arg1::Ptr{uiControl})
-	ccall((:uiControlDisable,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiControlDisable(arg1)
+    ccall((:uiControlDisable, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiAllocControl(n::Csize_t,OSsig::Integer,typesig::UInt32,typenamestr)
-	ccall((:uiAllocControl,libui),Ptr{uiControl},(Csize_t,UInt32,UInt32,Ptr{UInt8}),n,OSsig,typesig,typenamestr)
+function uiAllocControl(n::Csize_t, OSsig::UInt32, typesig::UInt32, typenamestr)
+    ccall((:uiAllocControl, libui), Ptr{uiControl}, (Csize_t, UInt32, UInt32, Cstring), n, OSsig, typesig, typenamestr)
 end
 
-function uiFreeControl(arg1::Ptr{uiControl})
-	ccall((:uiFreeControl,libui),Nothing,(Ptr{uiControl},),arg1)
+function uiFreeControl(arg1)
+    ccall((:uiFreeControl, libui), Nothing, (Ptr{uiControl},), arg1)
 end
 
-function uiControlVerifySetParent(arg1::Ptr{uiControl},arg2::Ptr{uiControl})
-	ccall((:uiControlVerifySetParent,libui),Nothing,(Ptr{uiControl},Ptr{uiControl}),arg1,arg2)
+function uiControlVerifySetParent(arg1, arg2)
+    ccall((:uiControlVerifySetParent, libui), Nothing, (Ptr{uiControl}, Ptr{uiControl}), arg1, arg2)
 end
 
-function uiControlEnabledToUser(arg1::Ptr{uiControl})
-	ccall((:uiControlEnabledToUser,libui),Cint,(Ptr{uiControl},),arg1)
+function uiControlEnabledToUser(arg1)
+    ccall((:uiControlEnabledToUser, libui), Cint, (Ptr{uiControl},), arg1)
 end
 
 function uiUserBugCannotSetParentOnToplevel(_type)
-	ccall((:uiUserBugCannotSetParentOnToplevel,libui),Nothing,(Ptr{UInt8},),_type)
+    ccall((:uiUserBugCannotSetParentOnToplevel, libui), Nothing, (Cstring,), _type)
 end
 
-function uiWindowTitle(w::Ptr{uiWindow})
-	ccall((:uiWindowTitle,libui),Ptr{UInt8},(Ptr{uiWindow},),w)
+function uiWindowTitle(w)
+    ccall((:uiWindowTitle, libui), Cstring, (Ptr{uiWindow},), w)
 end
 
-function uiWindowSetTitle(w::Ptr{uiWindow},title)
-	ccall((:uiWindowSetTitle,libui),Nothing,(Ptr{uiWindow},Ptr{UInt8}),w,title)
+function uiWindowSetTitle(w, title)
+    ccall((:uiWindowSetTitle, libui), Nothing, (Ptr{uiWindow}, Cstring), w, title)
 end
 
-function uiWindowOnClosing(w::Ptr{uiWindow},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiWindowOnClosing,libui),Nothing,(Ptr{uiWindow},Ptr{Nothing},Ptr{Nothing}),w,f,data)
+function uiWindowContentSize(w, width, height)
+    ccall((:uiWindowContentSize, libui), Nothing, (Ptr{uiWindow}, Ptr{Cint}, Ptr{Cint}), w, width, height)
 end
 
-function uiWindowSetChild(w::Ptr{uiWindow},child::Ptr{uiControl})
-	ccall((:uiWindowSetChild,libui),Nothing,(Ptr{uiWindow},Ptr{uiControl}),w,child)
+function uiWindowSetContentSize(w, width::Cint, height::Cint)
+    ccall((:uiWindowSetContentSize, libui), Nothing, (Ptr{uiWindow}, Cint, Cint), w, width, height)
 end
 
-function uiWindowMargined(w::Ptr{uiWindow})
-	ccall((:uiWindowMargined,libui),Cint,(Ptr{uiWindow},),w)
+function uiWindowFullscreen(w)
+    ccall((:uiWindowFullscreen, libui), Cint, (Ptr{uiWindow},), w)
 end
 
-function uiWindowSetMargined(w::Ptr{uiWindow},margined::Integer)
-	ccall((:uiWindowSetMargined,libui),Nothing,(Ptr{uiWindow},Cint),w,margined)
+function uiWindowSetFullscreen(w, fullscreen::Cint)
+    ccall((:uiWindowSetFullscreen, libui), Nothing, (Ptr{uiWindow}, Cint), w, fullscreen)
 end
 
-function uiNewWindow(title,width::Integer,height::Integer,hasMenubar::Integer)
-	ccall((:uiNewWindow,libui),Ptr{uiWindow},(Ptr{UInt8},Cint,Cint,Cint),title,width,height,hasMenubar)
+function uiWindowOnContentSizeChanged(w, f, data)
+    ccall((:uiWindowOnContentSizeChanged, libui), Nothing, (Ptr{uiWindow}, Ptr{Void}, Ptr{Void}), w, f, data)
 end
 
-function uiButtonText(b::Ptr{uiButton})
-	ccall((:uiButtonText,libui),Ptr{UInt8},(Ptr{uiButton},),b)
+function uiWindowOnClosing(w, f, data)
+    ccall((:uiWindowOnClosing, libui), Nothing, (Ptr{uiWindow}, Ptr{Void}, Ptr{Void}), w, f, data)
 end
 
-function uiButtonSetText(b::Ptr{uiButton},text)
-	ccall((:uiButtonSetText,libui),Nothing,(Ptr{uiButton},Ptr{UInt8}),b,text)
+function uiWindowBorderless(w)
+    ccall((:uiWindowBorderless, libui), Cint, (Ptr{uiWindow},), w)
 end
 
-function uiButtonOnClicked(b::Ptr{uiButton},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiButtonOnClicked,libui),Nothing,(Ptr{uiButton},Ptr{Nothing},Ptr{Nothing}),b,f,data)
+function uiWindowSetBorderless(w, borderless::Cint)
+    ccall((:uiWindowSetBorderless, libui), Nothing, (Ptr{uiWindow}, Cint), w, borderless)
+end
+
+function uiWindowSetChild(w, child)
+    ccall((:uiWindowSetChild, libui), Nothing, (Ptr{uiWindow}, Ptr{uiControl}), w, child)
+end
+
+function uiWindowMargined(w)
+    ccall((:uiWindowMargined, libui), Cint, (Ptr{uiWindow},), w)
+end
+
+function uiWindowSetMargined(w, margined::Cint)
+    ccall((:uiWindowSetMargined, libui), Nothing, (Ptr{uiWindow}, Cint), w, margined)
+end
+
+function uiNewWindow(title, width::Cint, height::Cint, hasMenubar::Cint)
+    ccall((:uiNewWindow, libui), Ptr{uiWindow}, (Cstring, Cint, Cint, Cint), title, width, height, hasMenubar)
+end
+
+function uiButtonText(b)
+    ccall((:uiButtonText, libui), Cstring, (Ptr{uiButton},), b)
+end
+
+function uiButtonSetText(b, text)
+    ccall((:uiButtonSetText, libui), Nothing, (Ptr{uiButton}, Cstring), b, text)
+end
+
+function uiButtonOnClicked(b, f, data)
+    ccall((:uiButtonOnClicked, libui), Nothing, (Ptr{uiButton}, Ptr{Void}, Ptr{Void}), b, f, data)
 end
 
 function uiNewButton(text)
-	ccall((:uiNewButton,libui),Ptr{uiButton},(Ptr{UInt8},),text)
+    ccall((:uiNewButton, libui), Ptr{uiButton}, (Cstring,), text)
 end
 
-function uiBoxAppend(b::Ptr{uiBox},child::Ptr{uiControl},stretchy::Integer)
-	ccall((:uiBoxAppend,libui),Nothing,(Ptr{uiBox},Ptr{uiControl},Cint),b,child,stretchy)
+function uiBoxAppend(b, child, stretchy::Cint)
+    ccall((:uiBoxAppend, libui), Nothing, (Ptr{uiBox}, Ptr{uiControl}, Cint), b, child, stretchy)
 end
 
-function uiBoxDelete(b::Ptr{uiBox},index::Integer)
-	ccall((:uiBoxDelete,libui),Nothing,(Ptr{uiBox},Culong),b,index)
+function uiBoxDelete(b, index::Cint)
+    ccall((:uiBoxDelete, libui), Nothing, (Ptr{uiBox}, Cint), b, index)
 end
 
-function uiBoxPadded(b::Ptr{uiBox})
-	ccall((:uiBoxPadded,libui),Cint,(Ptr{uiBox},),b)
+function uiBoxPadded(b)
+    ccall((:uiBoxPadded, libui), Cint, (Ptr{uiBox},), b)
 end
 
-function uiBoxSetPadded(b::Ptr{uiBox},padded::Integer)
-	ccall((:uiBoxSetPadded,libui),Nothing,(Ptr{uiBox},Cint),b,padded)
+function uiBoxSetPadded(b, padded::Cint)
+    ccall((:uiBoxSetPadded, libui), Nothing, (Ptr{uiBox}, Cint), b, padded)
 end
 
 function uiNewHorizontalBox()
-	ccall((:uiNewHorizontalBox,libui),Ptr{uiBox},())
+    ccall((:uiNewHorizontalBox, libui), Ptr{uiBox}, ())
 end
 
 function uiNewVerticalBox()
-	ccall((:uiNewVerticalBox,libui),Ptr{uiBox},())
+    ccall((:uiNewVerticalBox, libui), Ptr{uiBox}, ())
 end
 
-function uiEntryText(e::Ptr{uiEntry})
-	ccall((:uiEntryText,libui),Ptr{UInt8},(Ptr{uiEntry},),e)
+function uiCheckboxText(c)
+    ccall((:uiCheckboxText, libui), Cstring, (Ptr{uiCheckbox},), c)
 end
 
-function uiEntrySetText(e::Ptr{uiEntry},text)
-	ccall((:uiEntrySetText,libui),Nothing,(Ptr{uiEntry},Ptr{UInt8}),e,text)
+function uiCheckboxSetText(c, text)
+    ccall((:uiCheckboxSetText, libui), Nothing, (Ptr{uiCheckbox}, Cstring), c, text)
 end
 
-function uiEntryOnChanged(e::Ptr{uiEntry},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiEntryOnChanged,libui),Nothing,(Ptr{uiEntry},Ptr{Nothing},Ptr{Nothing}),e,f,data)
+function uiCheckboxOnToggled(c, f, data)
+    ccall((:uiCheckboxOnToggled, libui), Nothing, (Ptr{uiCheckbox}, Ptr{Void}, Ptr{Void}), c, f, data)
 end
 
-function uiEntryReadOnly(e::Ptr{uiEntry})
-	ccall((:uiEntryReadOnly,libui),Cint,(Ptr{uiEntry},),e)
+function uiCheckboxChecked(c)
+    ccall((:uiCheckboxChecked, libui), Cint, (Ptr{uiCheckbox},), c)
 end
 
-function uiEntrySetReadOnly(e::Ptr{uiEntry},readonly::Integer)
-	ccall((:uiEntrySetReadOnly,libui),Nothing,(Ptr{uiEntry},Cint),e,readonly)
-end
-
-function uiNewEntry()
-	ccall((:uiNewEntry,libui),Ptr{uiEntry},())
-end
-
-function uiCheckboxText(c::Ptr{uiCheckbox})
-	ccall((:uiCheckboxText,libui),Ptr{UInt8},(Ptr{uiCheckbox},),c)
-end
-
-function uiCheckboxSetText(c::Ptr{uiCheckbox},text)
-	ccall((:uiCheckboxSetText,libui),Nothing,(Ptr{uiCheckbox},Ptr{UInt8}),c,text)
-end
-
-function uiCheckboxOnToggled(c::Ptr{uiCheckbox},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiCheckboxOnToggled,libui),Nothing,(Ptr{uiCheckbox},Ptr{Nothing},Ptr{Nothing}),c,f,data)
-end
-
-function uiCheckboxChecked(c::Ptr{uiCheckbox})
-	ccall((:uiCheckboxChecked,libui),Cint,(Ptr{uiCheckbox},),c)
-end
-
-function uiCheckboxSetChecked(c::Ptr{uiCheckbox},checked::Integer)
-	ccall((:uiCheckboxSetChecked,libui),Nothing,(Ptr{uiCheckbox},Cint),c,checked)
+function uiCheckboxSetChecked(c, checked::Cint)
+    ccall((:uiCheckboxSetChecked, libui), Nothing, (Ptr{uiCheckbox}, Cint), c, checked)
 end
 
 function uiNewCheckbox(text)
-	ccall((:uiNewCheckbox,libui),Ptr{uiCheckbox},(Ptr{UInt8},),text)
+    ccall((:uiNewCheckbox, libui), Ptr{uiCheckbox}, (Cstring,), text)
 end
 
-function uiLabelText(l::Ptr{uiLabel})
-	ccall((:uiLabelText,libui),Ptr{UInt8},(Ptr{uiLabel},),l)
+function uiEntryText(e)
+    ccall((:uiEntryText, libui), Cstring, (Ptr{uiEntry},), e)
 end
 
-function uiLabelSetText(l::Ptr{uiLabel},text)
-	ccall((:uiLabelSetText,libui),Nothing,(Ptr{uiLabel},Ptr{UInt8}),l,text)
+function uiEntrySetText(e, text)
+    ccall((:uiEntrySetText, libui), Nothing, (Ptr{uiEntry}, Cstring), e, text)
+end
+
+function uiEntryOnChanged(e, f, data)
+    ccall((:uiEntryOnChanged, libui), Nothing, (Ptr{uiEntry}, Ptr{Void}, Ptr{Void}), e, f, data)
+end
+
+function uiEntryReadOnly(e)
+    ccall((:uiEntryReadOnly, libui), Cint, (Ptr{uiEntry},), e)
+end
+
+function uiEntrySetReadOnly(e, readonly::Cint)
+    ccall((:uiEntrySetReadOnly, libui), Nothing, (Ptr{uiEntry}, Cint), e, readonly)
+end
+
+function uiNewEntry()
+    ccall((:uiNewEntry, libui), Ptr{uiEntry}, ())
+end
+
+function uiNewPasswordEntry()
+    ccall((:uiNewPasswordEntry, libui), Ptr{uiEntry}, ())
+end
+
+function uiNewSearchEntry()
+    ccall((:uiNewSearchEntry, libui), Ptr{uiEntry}, ())
+end
+
+function uiLabelText(l)
+    ccall((:uiLabelText, libui), Cstring, (Ptr{uiLabel},), l)
+end
+
+function uiLabelSetText(l, text)
+    ccall((:uiLabelSetText, libui), Nothing, (Ptr{uiLabel}, Cstring), l, text)
 end
 
 function uiNewLabel(text)
-	ccall((:uiNewLabel,libui),Ptr{uiLabel},(Ptr{UInt8},),text)
+    ccall((:uiNewLabel, libui), Ptr{uiLabel}, (Cstring,), text)
 end
 
-function uiTabAppend(t::Ptr{uiTab},name,c::Ptr{uiControl})
-	ccall((:uiTabAppend,libui),Nothing,(Ptr{uiTab},Ptr{UInt8},Ptr{uiControl}),t,name,c)
+function uiTabAppend(t, name, c)
+    ccall((:uiTabAppend, libui), Nothing, (Ptr{uiTab}, Cstring, Ptr{uiControl}), t, name, c)
 end
 
-function uiTabInsertAt(t::Ptr{uiTab},name,before::Integer,c::Ptr{uiControl})
-	ccall((:uiTabInsertAt,libui),Nothing,(Ptr{uiTab},Ptr{UInt8},Culong,Ptr{uiControl}),t,name,before,c)
+function uiTabInsertAt(t, name, before::Cint, c)
+    ccall((:uiTabInsertAt, libui), Nothing, (Ptr{uiTab}, Cstring, Cint, Ptr{uiControl}), t, name, before, c)
 end
 
-function uiTabDelete(t::Ptr{uiTab},index::Integer)
-	ccall((:uiTabDelete,libui),Nothing,(Ptr{uiTab},Culong),t,index)
+function uiTabDelete(t, index::Cint)
+    ccall((:uiTabDelete, libui), Nothing, (Ptr{uiTab}, Cint), t, index)
 end
 
-function uiTabNumPages(t::Ptr{uiTab})
-	ccall((:uiTabNumPages,libui),Culong,(Ptr{uiTab},),t)
+function uiTabNumPages(t)
+    ccall((:uiTabNumPages, libui), Cint, (Ptr{uiTab},), t)
 end
 
-function uiTabMargined(t::Ptr{uiTab},page::Integer)
-	ccall((:uiTabMargined,libui),Cint,(Ptr{uiTab},Culong),t,page)
+function uiTabMargined(t, page::Cint)
+    ccall((:uiTabMargined, libui), Cint, (Ptr{uiTab}, Cint), t, page)
 end
 
-function uiTabSetMargined(t::Ptr{uiTab},page::Integer,margined::Integer)
-	ccall((:uiTabSetMargined,libui),Nothing,(Ptr{uiTab},Culong,Cint),t,page,margined)
+function uiTabSetMargined(t, page::Cint, margined::Cint)
+    ccall((:uiTabSetMargined, libui), Nothing, (Ptr{uiTab}, Cint, Cint), t, page, margined)
 end
 
 function uiNewTab()
-	ccall((:uiNewTab,libui),Ptr{uiTab},())
+    ccall((:uiNewTab, libui), Ptr{uiTab}, ())
 end
 
-function uiGroupTitle(g::Ptr{uiGroup})
-	ccall((:uiGroupTitle,libui),Ptr{UInt8},(Ptr{uiGroup},),g)
+function uiGroupTitle(g)
+    ccall((:uiGroupTitle, libui), Cstring, (Ptr{uiGroup},), g)
 end
 
-function uiGroupSetTitle(g::Ptr{uiGroup},title)
-	ccall((:uiGroupSetTitle,libui),Nothing,(Ptr{uiGroup},Ptr{UInt8}),g,title)
+function uiGroupSetTitle(g, title)
+    ccall((:uiGroupSetTitle, libui), Nothing, (Ptr{uiGroup}, Cstring), g, title)
 end
 
-function uiGroupSetChild(g::Ptr{uiGroup},c::Ptr{uiControl})
-	ccall((:uiGroupSetChild,libui),Nothing,(Ptr{uiGroup},Ptr{uiControl}),g,c)
+function uiGroupSetChild(g, c)
+    ccall((:uiGroupSetChild, libui), Nothing, (Ptr{uiGroup}, Ptr{uiControl}), g, c)
 end
 
-function uiGroupMargined(g::Ptr{uiGroup})
-	ccall((:uiGroupMargined,libui),Cint,(Ptr{uiGroup},),g)
+function uiGroupMargined(g)
+    ccall((:uiGroupMargined, libui), Cint, (Ptr{uiGroup},), g)
 end
 
-function uiGroupSetMargined(g::Ptr{uiGroup},margined::Integer)
-	ccall((:uiGroupSetMargined,libui),Nothing,(Ptr{uiGroup},Cint),g,margined)
+function uiGroupSetMargined(g, margined::Cint)
+    ccall((:uiGroupSetMargined, libui), Nothing, (Ptr{uiGroup}, Cint), g, margined)
 end
 
 function uiNewGroup(title)
-	ccall((:uiNewGroup,libui),Ptr{uiGroup},(Ptr{UInt8},),title)
+    ccall((:uiNewGroup, libui), Ptr{uiGroup}, (Cstring,), title)
 end
 
-function uiSpinboxValue(s::Ptr{uiSpinbox})
-	ccall((:uiSpinboxValue,libui),Clong,(Ptr{uiSpinbox},),s)
+function uiSpinboxValue(s)
+    ccall((:uiSpinboxValue, libui), Cint, (Ptr{uiSpinbox},), s)
 end
 
-function uiSpinboxSetValue(s::Ptr{uiSpinbox},value::Integer)
-	ccall((:uiSpinboxSetValue,libui),Nothing,(Ptr{uiSpinbox},Clong),s,value)
+function uiSpinboxSetValue(s, value::Cint)
+    ccall((:uiSpinboxSetValue, libui), Nothing, (Ptr{uiSpinbox}, Cint), s, value)
 end
 
-function uiSpinboxOnChanged(s::Ptr{uiSpinbox},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiSpinboxOnChanged,libui),Nothing,(Ptr{uiSpinbox},Ptr{Nothing},Ptr{Nothing}),s,f,data)
+function uiSpinboxOnChanged(s, f, data)
+    ccall((:uiSpinboxOnChanged, libui), Nothing, (Ptr{uiSpinbox}, Ptr{Void}, Ptr{Void}), s, f, data)
 end
 
-function uiNewSpinbox(min::Integer,max::Integer)
-	ccall((:uiNewSpinbox,libui),Ptr{uiSpinbox},(Clong,Clong),min,max)
+function uiNewSpinbox(min::Cint, max::Cint)
+    ccall((:uiNewSpinbox, libui), Ptr{uiSpinbox}, (Cint, Cint), min, max)
 end
 
-function uiProgressBarSetValue(p::Ptr{uiProgressBar},n::Integer)
-	ccall((:uiProgressBarSetValue,libui),Nothing,(Ptr{uiProgressBar},Cint),p,n)
+function uiSliderValue(s)
+    ccall((:uiSliderValue, libui), Cint, (Ptr{uiSlider},), s)
+end
+
+function uiSliderSetValue(s, value::Cint)
+    ccall((:uiSliderSetValue, libui), Nothing, (Ptr{uiSlider}, Cint), s, value)
+end
+
+function uiSliderOnChanged(s, f, data)
+    ccall((:uiSliderOnChanged, libui), Nothing, (Ptr{uiSlider}, Ptr{Void}, Ptr{Void}), s, f, data)
+end
+
+function uiNewSlider(min::Cint, max::Cint)
+    ccall((:uiNewSlider, libui), Ptr{uiSlider}, (Cint, Cint), min, max)
+end
+
+function uiProgressBarValue(p)
+    ccall((:uiProgressBarValue, libui), Cint, (Ptr{uiProgressBar},), p)
+end
+
+function uiProgressBarSetValue(p, n::Cint)
+    ccall((:uiProgressBarSetValue, libui), Nothing, (Ptr{uiProgressBar}, Cint), p, n)
 end
 
 function uiNewProgressBar()
-	ccall((:uiNewProgressBar,libui),Ptr{uiProgressBar},())
-end
-
-function uiSliderValue(s::Ptr{uiSlider})
-	ccall((:uiSliderValue,libui),Clong,(Ptr{uiSlider},),s)
-end
-
-function uiSliderSetValue(s::Ptr{uiSlider},value::Integer)
-	ccall((:uiSliderSetValue,libui),Nothing,(Ptr{uiSlider},Clong),s,value)
-end
-
-function uiSliderOnChanged(s::Ptr{uiSlider},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiSliderOnChanged,libui),Nothing,(Ptr{uiSlider},Ptr{Nothing},Ptr{Nothing}),s,f,data)
-end
-
-function uiNewSlider(min::Integer,max::Integer)
-	ccall((:uiNewSlider,libui),Ptr{uiSlider},(Clong,Clong),min,max)
+    ccall((:uiNewProgressBar, libui), Ptr{uiProgressBar}, ())
 end
 
 function uiNewHorizontalSeparator()
-	ccall((:uiNewHorizontalSeparator,libui),Ptr{uiSeparator},())
+    ccall((:uiNewHorizontalSeparator, libui), Ptr{uiSeparator}, ())
 end
 
-function uiComboboxAppend(c::Ptr{uiCombobox},text)
-	ccall((:uiComboboxAppend,libui),Nothing,(Ptr{uiCombobox},Ptr{UInt8}),c,text)
+function uiNewVerticalSeparator()
+    ccall((:uiNewVerticalSeparator, libui), Ptr{uiSeparator}, ())
 end
 
-function uiComboboxSelected(c::Ptr{uiCombobox})
-	ccall((:uiComboboxSelected,libui),Clong,(Ptr{uiCombobox},),c)
+function uiComboboxAppend(c, text)
+    ccall((:uiComboboxAppend, libui), Nothing, (Ptr{uiCombobox}, Cstring), c, text)
 end
 
-function uiComboboxSetSelected(c::Ptr{uiCombobox},n::Integer)
-	ccall((:uiComboboxSetSelected,libui),Nothing,(Ptr{uiCombobox},Clong),c,n)
+function uiComboboxSelected(c)
+    ccall((:uiComboboxSelected, libui), Cint, (Ptr{uiCombobox},), c)
 end
 
-function uiComboboxOnSelected(c::Ptr{uiCombobox},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiComboboxOnSelected,libui),Nothing,(Ptr{uiCombobox},Ptr{Nothing},Ptr{Nothing}),c,f,data)
+function uiComboboxSetSelected(c, n::Cint)
+    ccall((:uiComboboxSetSelected, libui), Nothing, (Ptr{uiCombobox}, Cint), c, n)
+end
+
+function uiComboboxOnSelected(c, f, data)
+    ccall((:uiComboboxOnSelected, libui), Nothing, (Ptr{uiCombobox}, Ptr{Void}, Ptr{Void}), c, f, data)
 end
 
 function uiNewCombobox()
-	ccall((:uiNewCombobox,libui),Ptr{uiCombobox},())
+    ccall((:uiNewCombobox, libui), Ptr{uiCombobox}, ())
 end
 
-function uiEditableComboboxAppend(c::Ptr{uiEditableCombobox},text)
-	ccall((:uiEditableComboboxAppend,libui),Nothing,(Ptr{uiEditableCombobox},Ptr{UInt8}),c,text)
+function uiEditableComboboxAppend(c, text)
+    ccall((:uiEditableComboboxAppend, libui), Nothing, (Ptr{uiEditableCombobox}, Cstring), c, text)
 end
 
-function uiEditableComboboxText(c::Ptr{uiEditableCombobox})
-	ccall((:uiEditableComboboxText,libui),Ptr{UInt8},(Ptr{uiEditableCombobox},),c)
+function uiEditableComboboxText(c)
+    ccall((:uiEditableComboboxText, libui), Cstring, (Ptr{uiEditableCombobox},), c)
 end
 
-function uiEditableComboboxSetText(c::Ptr{uiEditableCombobox},text)
-	ccall((:uiEditableComboboxSetText,libui),Nothing,(Ptr{uiEditableCombobox},Ptr{UInt8}),c,text)
+function uiEditableComboboxSetText(c, text)
+    ccall((:uiEditableComboboxSetText, libui), Nothing, (Ptr{uiEditableCombobox}, Cstring), c, text)
 end
 
-function uiEditableComboboxOnChanged(c::Ptr{uiEditableCombobox},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiEditableComboboxOnChanged,libui),Nothing,(Ptr{uiEditableCombobox},Ptr{Nothing},Ptr{Nothing}),c,f,data)
+function uiEditableComboboxOnChanged(c, f, data)
+    ccall((:uiEditableComboboxOnChanged, libui), Nothing, (Ptr{uiEditableCombobox}, Ptr{Void}, Ptr{Void}), c, f, data)
 end
 
 function uiNewEditableCombobox()
-	ccall((:uiNewEditableCombobox,libui),Ptr{uiEditableCombobox},())
+    ccall((:uiNewEditableCombobox, libui), Ptr{uiEditableCombobox}, ())
 end
 
-function uiRadioButtonsAppend(r::Ptr{uiRadioButtons},text)
-	ccall((:uiRadioButtonsAppend,libui),Nothing,(Ptr{uiRadioButtons},Ptr{UInt8}),r,text)
+function uiRadioButtonsAppend(r, text)
+    ccall((:uiRadioButtonsAppend, libui), Nothing, (Ptr{uiRadioButtons}, Cstring), r, text)
+end
+
+function uiRadioButtonsSelected(r)
+    ccall((:uiRadioButtonsSelected, libui), Cint, (Ptr{uiRadioButtons},), r)
+end
+
+function uiRadioButtonsSetSelected(r, n::Cint)
+    ccall((:uiRadioButtonsSetSelected, libui), Nothing, (Ptr{uiRadioButtons}, Cint), r, n)
+end
+
+function uiRadioButtonsOnSelected(r, f, data)
+    ccall((:uiRadioButtonsOnSelected, libui), Nothing, (Ptr{uiRadioButtons}, Ptr{Void}, Ptr{Void}), r, f, data)
 end
 
 function uiNewRadioButtons()
-	ccall((:uiNewRadioButtons,libui),Ptr{uiRadioButtons},())
+    ccall((:uiNewRadioButtons, libui), Ptr{uiRadioButtons}, ())
+end
+
+function uiDateTimePickerTime(d, time)
+    ccall((:uiDateTimePickerTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}), d, time)
+end
+
+function uiDateTimePickerSetTime(d, time)
+    ccall((:uiDateTimePickerSetTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}), d, time)
+end
+
+function uiDateTimePickerOnChanged(d, f, data)
+    ccall((:uiDateTimePickerOnChanged, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}, Ptr{Void}), d, f, data)
 end
 
 function uiNewDateTimePicker()
-	ccall((:uiNewDateTimePicker,libui),Ptr{uiDateTimePicker},())
+    ccall((:uiNewDateTimePicker, libui), Ptr{uiDateTimePicker}, ())
 end
 
 function uiNewDatePicker()
-	ccall((:uiNewDatePicker,libui),Ptr{uiDateTimePicker},())
+    ccall((:uiNewDatePicker, libui), Ptr{uiDateTimePicker}, ())
 end
 
 function uiNewTimePicker()
-	ccall((:uiNewTimePicker,libui),Ptr{uiDateTimePicker},())
+    ccall((:uiNewTimePicker, libui), Ptr{uiDateTimePicker}, ())
 end
 
-function uiMultilineEntryText(e::Ptr{uiMultilineEntry})
-	ccall((:uiMultilineEntryText,libui),Ptr{UInt8},(Ptr{uiMultilineEntry},),e)
+function uiMultilineEntryText(e)
+    ccall((:uiMultilineEntryText, libui), Cstring, (Ptr{uiMultilineEntry},), e)
 end
 
-function uiMultilineEntrySetText(e::Ptr{uiMultilineEntry},text)
-	ccall((:uiMultilineEntrySetText,libui),Nothing,(Ptr{uiMultilineEntry},Ptr{UInt8}),e,text)
+function uiMultilineEntrySetText(e, text)
+    ccall((:uiMultilineEntrySetText, libui), Nothing, (Ptr{uiMultilineEntry}, Cstring), e, text)
 end
 
-function uiMultilineEntryAppend(e::Ptr{uiMultilineEntry},text)
-	ccall((:uiMultilineEntryAppend,libui),Nothing,(Ptr{uiMultilineEntry},Ptr{UInt8}),e,text)
+function uiMultilineEntryAppend(e, text)
+    ccall((:uiMultilineEntryAppend, libui), Nothing, (Ptr{uiMultilineEntry}, Cstring), e, text)
 end
 
-function uiMultilineEntryOnChanged(e::Ptr{uiMultilineEntry},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiMultilineEntryOnChanged,libui),Nothing,(Ptr{uiMultilineEntry},Ptr{Nothing},Ptr{Nothing}),e,f,data)
+function uiMultilineEntryOnChanged(e, f, data)
+    ccall((:uiMultilineEntryOnChanged, libui), Nothing, (Ptr{uiMultilineEntry}, Ptr{Void}, Ptr{Void}), e, f, data)
 end
 
-function uiMultilineEntryReadOnly(e::Ptr{uiMultilineEntry})
-	ccall((:uiMultilineEntryReadOnly,libui),Cint,(Ptr{uiMultilineEntry},),e)
+function uiMultilineEntryReadOnly(e)
+    ccall((:uiMultilineEntryReadOnly, libui), Cint, (Ptr{uiMultilineEntry},), e)
 end
 
-function uiMultilineEntrySetReadOnly(e::Ptr{uiMultilineEntry},readonly::Integer)
-	ccall((:uiMultilineEntrySetReadOnly,libui),Nothing,(Ptr{uiMultilineEntry},Cint),e,readonly)
+function uiMultilineEntrySetReadOnly(e, readonly::Cint)
+    ccall((:uiMultilineEntrySetReadOnly, libui), Nothing, (Ptr{uiMultilineEntry}, Cint), e, readonly)
 end
 
 function uiNewMultilineEntry()
-	ccall((:uiNewMultilineEntry,libui),Ptr{uiMultilineEntry},())
+    ccall((:uiNewMultilineEntry, libui), Ptr{uiMultilineEntry}, ())
 end
 
 function uiNewNonWrappingMultilineEntry()
-	ccall((:uiNewNonWrappingMultilineEntry,libui),Ptr{uiMultilineEntry},())
+    ccall((:uiNewNonWrappingMultilineEntry, libui), Ptr{uiMultilineEntry}, ())
 end
 
-function uiMenuItemEnable(m::Ptr{uiMenuItem})
-	ccall((:uiMenuItemEnable,libui),Nothing,(Ptr{uiMenuItem},),m)
+function uiMenuItemEnable(m)
+    ccall((:uiMenuItemEnable, libui), Nothing, (Ptr{uiMenuItem},), m)
 end
 
-function uiMenuItemDisable(m::Ptr{uiMenuItem})
-	ccall((:uiMenuItemDisable,libui),Nothing,(Ptr{uiMenuItem},),m)
+function uiMenuItemDisable(m)
+    ccall((:uiMenuItemDisable, libui), Nothing, (Ptr{uiMenuItem},), m)
 end
 
-function uiMenuItemOnClicked(m::Ptr{uiMenuItem},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiMenuItemOnClicked,libui),Nothing,(Ptr{uiMenuItem},Ptr{Nothing},Ptr{Nothing}),m,f,data)
+function uiMenuItemOnClicked(m, f, data)
+    ccall((:uiMenuItemOnClicked, libui), Nothing, (Ptr{uiMenuItem}, Ptr{Void}, Ptr{Void}), m, f, data)
 end
 
-function uiMenuItemChecked(m::Ptr{uiMenuItem})
-	ccall((:uiMenuItemChecked,libui),Cint,(Ptr{uiMenuItem},),m)
+function uiMenuItemChecked(m)
+    ccall((:uiMenuItemChecked, libui), Cint, (Ptr{uiMenuItem},), m)
 end
 
-function uiMenuItemSetChecked(m::Ptr{uiMenuItem},checked::Integer)
-	ccall((:uiMenuItemSetChecked,libui),Nothing,(Ptr{uiMenuItem},Cint),m,checked)
+function uiMenuItemSetChecked(m, checked::Cint)
+    ccall((:uiMenuItemSetChecked, libui), Nothing, (Ptr{uiMenuItem}, Cint), m, checked)
 end
 
-function uiMenuAppendItem(m::Ptr{uiMenu},name)
-	ccall((:uiMenuAppendItem,libui),Ptr{uiMenuItem},(Ptr{uiMenu},Ptr{UInt8}),m,name)
+function uiMenuAppendItem(m, name)
+    ccall((:uiMenuAppendItem, libui), Ptr{uiMenuItem}, (Ptr{uiMenu}, Cstring), m, name)
 end
 
-function uiMenuAppendCheckItem(m::Ptr{uiMenu},name)
-	ccall((:uiMenuAppendCheckItem,libui),Ptr{uiMenuItem},(Ptr{uiMenu},Ptr{UInt8}),m,name)
+function uiMenuAppendCheckItem(m, name)
+    ccall((:uiMenuAppendCheckItem, libui), Ptr{uiMenuItem}, (Ptr{uiMenu}, Cstring), m, name)
 end
 
-function uiMenuAppendQuitItem(m::Ptr{uiMenu})
-	ccall((:uiMenuAppendQuitItem,libui),Ptr{uiMenuItem},(Ptr{uiMenu},),m)
+function uiMenuAppendQuitItem(m)
+    ccall((:uiMenuAppendQuitItem, libui), Ptr{uiMenuItem}, (Ptr{uiMenu},), m)
 end
 
-function uiMenuAppendPreferencesItem(m::Ptr{uiMenu})
-	ccall((:uiMenuAppendPreferencesItem,libui),Ptr{uiMenuItem},(Ptr{uiMenu},),m)
+function uiMenuAppendPreferencesItem(m)
+    ccall((:uiMenuAppendPreferencesItem, libui), Ptr{uiMenuItem}, (Ptr{uiMenu},), m)
 end
 
-function uiMenuAppendAboutItem(m::Ptr{uiMenu})
-	ccall((:uiMenuAppendAboutItem,libui),Ptr{uiMenuItem},(Ptr{uiMenu},),m)
+function uiMenuAppendAboutItem(m)
+    ccall((:uiMenuAppendAboutItem, libui), Ptr{uiMenuItem}, (Ptr{uiMenu},), m)
 end
 
-function uiMenuAppendSeparator(m::Ptr{uiMenu})
-	ccall((:uiMenuAppendSeparator,libui),Nothing,(Ptr{uiMenu},),m)
+function uiMenuAppendSeparator(m)
+    ccall((:uiMenuAppendSeparator, libui), Nothing, (Ptr{uiMenu},), m)
 end
 
 function uiNewMenu(name)
-	ccall((:uiNewMenu,libui),Ptr{uiMenu},(Ptr{UInt8},),name)
+    ccall((:uiNewMenu, libui), Ptr{uiMenu}, (Cstring,), name)
 end
 
-function uiOpenFile(parent::Ptr{uiWindow})
-	ccall((:uiOpenFile,libui),Ptr{UInt8},(Ptr{uiWindow},),parent)
+function uiOpenFile(parent)
+    ccall((:uiOpenFile, libui), Cstring, (Ptr{uiWindow},), parent)
 end
 
-function uiSaveFile(parent::Ptr{uiWindow})
-	ccall((:uiSaveFile,libui),Ptr{UInt8},(Ptr{uiWindow},),parent)
+function uiSaveFile(parent)
+    ccall((:uiSaveFile, libui), Cstring, (Ptr{uiWindow},), parent)
 end
 
-function uiMsgBox(parent::Ptr{uiWindow},title,description)
-	ccall((:uiMsgBox,libui),Nothing,(Ptr{uiWindow},Ptr{UInt8},Ptr{UInt8}),parent,title,description)
+function uiMsgBox(parent, title, description)
+    ccall((:uiMsgBox, libui), Nothing, (Ptr{uiWindow}, Cstring, Cstring), parent, title, description)
 end
 
-function uiMsgBoxError(parent::Ptr{uiWindow},title,description)
-	ccall((:uiMsgBoxError,libui),Nothing,(Ptr{uiWindow},Ptr{UInt8},Ptr{UInt8}),parent,title,description)
+function uiMsgBoxError(parent, title, description)
+    ccall((:uiMsgBoxError, libui), Nothing, (Ptr{uiWindow}, Cstring, Cstring), parent, title, description)
 end
 
-function uiAreaSetSize(a::Ptr{uiArea},width::Integer,height::Integer)
-	ccall((:uiAreaSetSize,libui),Nothing,(Ptr{uiArea},Clong,Clong),a,width,height)
+function uiAreaSetSize(a, width::Cint, height::Cint)
+    ccall((:uiAreaSetSize, libui), Nothing, (Ptr{uiArea}, Cint, Cint), a, width, height)
 end
 
-function uiAreaQueueRedrawAll(a::Ptr{uiArea})
-	ccall((:uiAreaQueueRedrawAll,libui),Nothing,(Ptr{uiArea},),a)
+function uiAreaQueueRedrawAll(a)
+    ccall((:uiAreaQueueRedrawAll, libui), Nothing, (Ptr{uiArea},), a)
 end
 
-function uiAreaScrollTo(a::Ptr{uiArea},x::Cdouble,y::Cdouble,width::Cdouble,height::Cdouble)
-	ccall((:uiAreaScrollTo,libui),Nothing,(Ptr{uiArea},Cdouble,Cdouble,Cdouble,Cdouble),a,x,y,width,height)
+function uiAreaScrollTo(a, x::Cdouble, y::Cdouble, width::Cdouble, height::Cdouble)
+    ccall((:uiAreaScrollTo, libui), Nothing, (Ptr{uiArea}, Cdouble, Cdouble, Cdouble, Cdouble), a, x, y, width, height)
 end
 
-function uiNewArea(ah::Ptr{uiAreaHandler})
-	ccall((:uiNewArea,libui),Ptr{uiArea},(Ptr{uiAreaHandler},),ah)
+function uiAreaBeginUserWindowMove(a)
+    ccall((:uiAreaBeginUserWindowMove, libui), Nothing, (Ptr{uiArea},), a)
 end
 
-function uiNewScrollingArea(ah::Ptr{uiAreaHandler},width::Integer,height::Integer)
-	ccall((:uiNewScrollingArea,libui),Ptr{uiArea},(Ptr{uiAreaHandler},Clong,Clong),ah,width,height)
+function uiAreaBeginUserWindowResize(a, edge::uiWindowResizeEdge)
+    ccall((:uiAreaBeginUserWindowResize, libui), Nothing, (Ptr{uiArea}, uiWindowResizeEdge), a, edge)
+end
+
+function uiNewArea(ah)
+    ccall((:uiNewArea, libui), Ptr{uiArea}, (Ptr{uiAreaHandler},), ah)
+end
+
+function uiNewScrollingArea(ah, width::Cint, height::Cint)
+    ccall((:uiNewScrollingArea, libui), Ptr{uiArea}, (Ptr{uiAreaHandler}, Cint, Cint), ah, width, height)
 end
 
 function uiDrawNewPath(fillMode::uiDrawFillMode)
-	ccall((:uiDrawNewPath,libui),Ptr{uiDrawPath},(uiDrawFillMode,),fillMode)
+    ccall((:uiDrawNewPath, libui), Ptr{uiDrawPath}, (uiDrawFillMode,), fillMode)
 end
 
-function uiDrawFreePath(p::Ptr{uiDrawPath})
-	ccall((:uiDrawFreePath,libui),Nothing,(Ptr{uiDrawPath},),p)
+function uiDrawFreePath(p)
+    ccall((:uiDrawFreePath, libui), Nothing, (Ptr{uiDrawPath},), p)
 end
 
-function uiDrawPathNewFigure(p::Ptr{uiDrawPath},x::Cdouble,y::Cdouble)
-	ccall((:uiDrawPathNewFigure,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble),p,x,y)
+function uiDrawPathNewFigure(p, x::Cdouble, y::Cdouble)
+    ccall((:uiDrawPathNewFigure, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble), p, x, y)
 end
 
-function uiDrawPathNewFigureWithArc(p::Ptr{uiDrawPath},xCenter::Cdouble,yCenter::Cdouble,radius::Cdouble,startAngle::Cdouble,sweep::Cdouble,negative::Integer)
-	ccall((:uiDrawPathNewFigureWithArc,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cint),p,xCenter,yCenter,radius,startAngle,sweep,negative)
+function uiDrawPathNewFigureWithArc(p, xCenter::Cdouble, yCenter::Cdouble, radius::Cdouble, startAngle::Cdouble, sweep::Cdouble, negative::Cint)
+    ccall((:uiDrawPathNewFigureWithArc, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cint), p, xCenter, yCenter, radius, startAngle, sweep, negative)
 end
 
-function uiDrawPathLineTo(p::Ptr{uiDrawPath},x::Cdouble,y::Cdouble)
-	ccall((:uiDrawPathLineTo,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble),p,x,y)
+function uiDrawPathLineTo(p, x::Cdouble, y::Cdouble)
+    ccall((:uiDrawPathLineTo, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble), p, x, y)
 end
 
-function uiDrawPathArcTo(p::Ptr{uiDrawPath},xCenter::Cdouble,yCenter::Cdouble,radius::Cdouble,startAngle::Cdouble,sweep::Cdouble,negative::Integer)
-	ccall((:uiDrawPathArcTo,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cint),p,xCenter,yCenter,radius,startAngle,sweep,negative)
+function uiDrawPathArcTo(p, xCenter::Cdouble, yCenter::Cdouble, radius::Cdouble, startAngle::Cdouble, sweep::Cdouble, negative::Cint)
+    ccall((:uiDrawPathArcTo, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cint), p, xCenter, yCenter, radius, startAngle, sweep, negative)
 end
 
-function uiDrawPathBezierTo(p::Ptr{uiDrawPath},c1x::Cdouble,c1y::Cdouble,c2x::Cdouble,c2y::Cdouble,endX::Cdouble,endY::Cdouble)
-	ccall((:uiDrawPathBezierTo,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble,Cdouble,Cdouble,Cdouble,Cdouble),p,c1x,c1y,c2x,c2y,endX,endY)
+function uiDrawPathBezierTo(p, c1x::Cdouble, c1y::Cdouble, c2x::Cdouble, c2y::Cdouble, endX::Cdouble, endY::Cdouble)
+    ccall((:uiDrawPathBezierTo, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble, Cdouble), p, c1x, c1y, c2x, c2y, endX, endY)
 end
 
-function uiDrawPathCloseFigure(p::Ptr{uiDrawPath})
-	ccall((:uiDrawPathCloseFigure,libui),Nothing,(Ptr{uiDrawPath},),p)
+function uiDrawPathCloseFigure(p)
+    ccall((:uiDrawPathCloseFigure, libui), Nothing, (Ptr{uiDrawPath},), p)
 end
 
-function uiDrawPathAddRectangle(p::Ptr{uiDrawPath},x::Cdouble,y::Cdouble,width::Cdouble,height::Cdouble)
-	ccall((:uiDrawPathAddRectangle,libui),Nothing,(Ptr{uiDrawPath},Cdouble,Cdouble,Cdouble,Cdouble),p,x,y,width,height)
+function uiDrawPathAddRectangle(p, x::Cdouble, y::Cdouble, width::Cdouble, height::Cdouble)
+    ccall((:uiDrawPathAddRectangle, libui), Nothing, (Ptr{uiDrawPath}, Cdouble, Cdouble, Cdouble, Cdouble), p, x, y, width, height)
 end
 
-function uiDrawPathEnd(p::Ptr{uiDrawPath})
-	ccall((:uiDrawPathEnd,libui),Nothing,(Ptr{uiDrawPath},),p)
+function uiDrawPathEnd(p)
+    ccall((:uiDrawPathEnd, libui), Nothing, (Ptr{uiDrawPath},), p)
 end
 
-function uiDrawStroke(c::Ptr{uiDrawContext},path::Ptr{uiDrawPath},b::Ptr{uiDrawBrush},p::Ptr{uiDrawStrokeParams})
-	ccall((:uiDrawStroke,libui),Nothing,(Ptr{uiDrawContext},Ptr{uiDrawPath},Ptr{uiDrawBrush},Ptr{uiDrawStrokeParams}),c,path,b,p)
+function uiDrawStroke(c, path, b, p)
+    ccall((:uiDrawStroke, libui), Nothing, (Ptr{uiDrawContext}, Ptr{uiDrawPath}, Ptr{uiDrawBrush}, Ptr{uiDrawStrokeParams}), c, path, b, p)
 end
 
-function uiDrawFill(c::Ptr{uiDrawContext},path::Ptr{uiDrawPath},b::Ptr{uiDrawBrush})
-	ccall((:uiDrawFill,libui),Nothing,(Ptr{uiDrawContext},Ptr{uiDrawPath},Ptr{uiDrawBrush}),c,path,b)
+function uiDrawFill(c, path, b)
+    ccall((:uiDrawFill, libui), Nothing, (Ptr{uiDrawContext}, Ptr{uiDrawPath}, Ptr{uiDrawBrush}), c, path, b)
 end
 
-function uiDrawMatrixSetIdentity(m::Ptr{uiDrawMatrix})
-	ccall((:uiDrawMatrixSetIdentity,libui),Nothing,(Ptr{uiDrawMatrix},),m)
+function uiDrawMatrixSetIdentity(m)
+    ccall((:uiDrawMatrixSetIdentity, libui), Nothing, (Ptr{uiDrawMatrix},), m)
 end
 
-function uiDrawMatrixTranslate(m::Ptr{uiDrawMatrix},x::Cdouble,y::Cdouble)
-	ccall((:uiDrawMatrixTranslate,libui),Nothing,(Ptr{uiDrawMatrix},Cdouble,Cdouble),m,x,y)
+function uiDrawMatrixTranslate(m, x::Cdouble, y::Cdouble)
+    ccall((:uiDrawMatrixTranslate, libui), Nothing, (Ptr{uiDrawMatrix}, Cdouble, Cdouble), m, x, y)
 end
 
-function uiDrawMatrixScale(m::Ptr{uiDrawMatrix},xCenter::Cdouble,yCenter::Cdouble,x::Cdouble,y::Cdouble)
-	ccall((:uiDrawMatrixScale,libui),Nothing,(Ptr{uiDrawMatrix},Cdouble,Cdouble,Cdouble,Cdouble),m,xCenter,yCenter,x,y)
+function uiDrawMatrixScale(m, xCenter::Cdouble, yCenter::Cdouble, x::Cdouble, y::Cdouble)
+    ccall((:uiDrawMatrixScale, libui), Nothing, (Ptr{uiDrawMatrix}, Cdouble, Cdouble, Cdouble, Cdouble), m, xCenter, yCenter, x, y)
 end
 
-function uiDrawMatrixRotate(m::Ptr{uiDrawMatrix},x::Cdouble,y::Cdouble,amount::Cdouble)
-	ccall((:uiDrawMatrixRotate,libui),Nothing,(Ptr{uiDrawMatrix},Cdouble,Cdouble,Cdouble),m,x,y,amount)
+function uiDrawMatrixRotate(m, x::Cdouble, y::Cdouble, amount::Cdouble)
+    ccall((:uiDrawMatrixRotate, libui), Nothing, (Ptr{uiDrawMatrix}, Cdouble, Cdouble, Cdouble), m, x, y, amount)
 end
 
-function uiDrawMatrixSkew(m::Ptr{uiDrawMatrix},x::Cdouble,y::Cdouble,xamount::Cdouble,yamount::Cdouble)
-	ccall((:uiDrawMatrixSkew,libui),Nothing,(Ptr{uiDrawMatrix},Cdouble,Cdouble,Cdouble,Cdouble),m,x,y,xamount,yamount)
+function uiDrawMatrixSkew(m, x::Cdouble, y::Cdouble, xamount::Cdouble, yamount::Cdouble)
+    ccall((:uiDrawMatrixSkew, libui), Nothing, (Ptr{uiDrawMatrix}, Cdouble, Cdouble, Cdouble, Cdouble), m, x, y, xamount, yamount)
 end
 
-function uiDrawMatrixMultiply(dest::Ptr{uiDrawMatrix},src::Ptr{uiDrawMatrix})
-	ccall((:uiDrawMatrixMultiply,libui),Nothing,(Ptr{uiDrawMatrix},Ptr{uiDrawMatrix}),dest,src)
+function uiDrawMatrixMultiply(dest, src)
+    ccall((:uiDrawMatrixMultiply, libui), Nothing, (Ptr{uiDrawMatrix}, Ptr{uiDrawMatrix}), dest, src)
 end
 
-function uiDrawMatrixInvertible(m::Ptr{uiDrawMatrix})
-	ccall((:uiDrawMatrixInvertible,libui),Cint,(Ptr{uiDrawMatrix},),m)
+function uiDrawMatrixInvertible(m)
+    ccall((:uiDrawMatrixInvertible, libui), Cint, (Ptr{uiDrawMatrix},), m)
 end
 
-function uiDrawMatrixInvert(m::Ptr{uiDrawMatrix})
-	ccall((:uiDrawMatrixInvert,libui),Cint,(Ptr{uiDrawMatrix},),m)
+function uiDrawMatrixInvert(m)
+    ccall((:uiDrawMatrixInvert, libui), Cint, (Ptr{uiDrawMatrix},), m)
 end
 
-function uiDrawMatrixTransformPoint(m::Ptr{uiDrawMatrix},x::Ptr{Cdouble},y::Ptr{Cdouble})
-	ccall((:uiDrawMatrixTransformPoint,libui),Nothing,(Ptr{uiDrawMatrix},Ptr{Cdouble},Ptr{Cdouble}),m,x,y)
+function uiDrawMatrixTransformPoint(m, x, y)
+    ccall((:uiDrawMatrixTransformPoint, libui), Nothing, (Ptr{uiDrawMatrix}, Ptr{Cdouble}, Ptr{Cdouble}), m, x, y)
 end
 
-function uiDrawMatrixTransformSize(m::Ptr{uiDrawMatrix},x::Ptr{Cdouble},y::Ptr{Cdouble})
-	ccall((:uiDrawMatrixTransformSize,libui),Nothing,(Ptr{uiDrawMatrix},Ptr{Cdouble},Ptr{Cdouble}),m,x,y)
+function uiDrawMatrixTransformSize(m, x, y)
+    ccall((:uiDrawMatrixTransformSize, libui), Nothing, (Ptr{uiDrawMatrix}, Ptr{Cdouble}, Ptr{Cdouble}), m, x, y)
 end
 
-function uiDrawTransform(c::Ptr{uiDrawContext},m::Ptr{uiDrawMatrix})
-	ccall((:uiDrawTransform,libui),Nothing,(Ptr{uiDrawContext},Ptr{uiDrawMatrix}),c,m)
+function uiDrawTransform(c, m)
+    ccall((:uiDrawTransform, libui), Nothing, (Ptr{uiDrawContext}, Ptr{uiDrawMatrix}), c, m)
 end
 
-function uiDrawClip(c::Ptr{uiDrawContext},path::Ptr{uiDrawPath})
-	ccall((:uiDrawClip,libui),Nothing,(Ptr{uiDrawContext},Ptr{uiDrawPath}),c,path)
+function uiDrawClip(c, path)
+    ccall((:uiDrawClip, libui), Nothing, (Ptr{uiDrawContext}, Ptr{uiDrawPath}), c, path)
 end
 
-function uiDrawSave(c::Ptr{uiDrawContext})
-	ccall((:uiDrawSave,libui),Nothing,(Ptr{uiDrawContext},),c)
+function uiDrawSave(c)
+    ccall((:uiDrawSave, libui), Nothing, (Ptr{uiDrawContext},), c)
 end
 
-function uiDrawRestore(c::Ptr{uiDrawContext})
-	ccall((:uiDrawRestore,libui),Nothing,(Ptr{uiDrawContext},),c)
+function uiDrawRestore(c)
+    ccall((:uiDrawRestore, libui), Nothing, (Ptr{uiDrawContext},), c)
 end
 
-function uiDrawListFontFamilies()
-	ccall((:uiDrawListFontFamilies,libui),Ptr{uiDrawFontFamilies},())
+function uiFreeAttribute(a)
+    ccall((:uiFreeAttribute, libui), Nothing, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawFontFamiliesNumFamilies(ff::Ptr{uiDrawFontFamilies})
-	ccall((:uiDrawFontFamiliesNumFamilies,libui),Culong,(Ptr{uiDrawFontFamilies},),ff)
+function uiAttributeGetType(a)
+    ccall((:uiAttributeGetType, libui), uiAttributeType, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawFontFamiliesFamily(ff::Ptr{uiDrawFontFamilies},n::Integer)
-	ccall((:uiDrawFontFamiliesFamily,libui),Ptr{UInt8},(Ptr{uiDrawFontFamilies},Culong),ff,n)
+function uiNewFamilyAttribute(family)
+    ccall((:uiNewFamilyAttribute, libui), Ptr{uiAttribute}, (Cstring,), family)
 end
 
-function uiDrawFreeFontFamilies(ff::Ptr{uiDrawFontFamilies})
-	ccall((:uiDrawFreeFontFamilies,libui),Nothing,(Ptr{uiDrawFontFamilies},),ff)
+function uiAttributeFamily(a)
+    ccall((:uiAttributeFamily, libui), Cstring, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawLoadClosestFont(desc::Ptr{uiDrawTextFontDescriptor})
-	ccall((:uiDrawLoadClosestFont,libui),Ptr{uiDrawTextFont},(Ptr{uiDrawTextFontDescriptor},),desc)
+function uiNewSizeAttribute(size::Cdouble)
+    ccall((:uiNewSizeAttribute, libui), Ptr{uiAttribute}, (Cdouble,), size)
 end
 
-function uiDrawFreeTextFont(font::Ptr{uiDrawTextFont})
-	ccall((:uiDrawFreeTextFont,libui),Nothing,(Ptr{uiDrawTextFont},),font)
+function uiAttributeSize(a)
+    ccall((:uiAttributeSize, libui), Cdouble, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawTextFontHandle(font::Ptr{uiDrawTextFont})
-	ccall((:uiDrawTextFontHandle,libui),Csize_t,(Ptr{uiDrawTextFont},),font)
+function uiNewWeightAttribute(weight::uiTextWeight)
+    ccall((:uiNewWeightAttribute, libui), Ptr{uiAttribute}, (uiTextWeight,), weight)
 end
 
-function uiDrawTextFontDescribe(font::Ptr{uiDrawTextFont},desc::Ptr{uiDrawTextFontDescriptor})
-	ccall((:uiDrawTextFontDescribe,libui),Nothing,(Ptr{uiDrawTextFont},Ptr{uiDrawTextFontDescriptor}),font,desc)
+function uiAttributeWeight(a)
+    ccall((:uiAttributeWeight, libui), uiTextWeight, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawTextFontGetMetrics(font::Ptr{uiDrawTextFont},metrics::Ptr{uiDrawTextFontMetrics})
-	ccall((:uiDrawTextFontGetMetrics,libui),Nothing,(Ptr{uiDrawTextFont},Ptr{uiDrawTextFontMetrics}),font,metrics)
+function uiNewItalicAttribute(italic::uiTextItalic)
+    ccall((:uiNewItalicAttribute, libui), Ptr{uiAttribute}, (uiTextItalic,), italic)
 end
 
-function uiDrawNewTextLayout(text,defaultFont::Ptr{uiDrawTextFont},width::Cdouble)
-	ccall((:uiDrawNewTextLayout,libui),Ptr{uiDrawTextLayout},(Ptr{UInt8},Ptr{uiDrawTextFont},Cdouble),text,defaultFont,width)
+function uiAttributeItalic(a)
+    ccall((:uiAttributeItalic, libui), uiTextItalic, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawFreeTextLayout(layout::Ptr{uiDrawTextLayout})
-	ccall((:uiDrawFreeTextLayout,libui),Nothing,(Ptr{uiDrawTextLayout},),layout)
+function uiNewStretchAttribute(stretch::uiTextStretch)
+    ccall((:uiNewStretchAttribute, libui), Ptr{uiAttribute}, (uiTextStretch,), stretch)
 end
 
-function uiDrawTextLayoutSetWidth(layout::Ptr{uiDrawTextLayout},width::Cdouble)
-	ccall((:uiDrawTextLayoutSetWidth,libui),Nothing,(Ptr{uiDrawTextLayout},Cdouble),layout,width)
+function uiAttributeStretch(a)
+    ccall((:uiAttributeStretch, libui), uiTextStretch, (Ptr{uiAttribute},), a)
 end
 
-function uiDrawTextLayoutExtents(layout::Ptr{uiDrawTextLayout},width::Ptr{Cdouble},height::Ptr{Cdouble})
-	ccall((:uiDrawTextLayoutExtents,libui),Nothing,(Ptr{uiDrawTextLayout},Ptr{Cdouble},Ptr{Cdouble}),layout,width,height)
+function uiNewColorAttribute(r::Cdouble, g::Cdouble, b::Cdouble, a::Cdouble)
+    ccall((:uiNewColorAttribute, libui), Ptr{uiAttribute}, (Cdouble, Cdouble, Cdouble, Cdouble), r, g, b, a)
 end
 
-function uiDrawTextLayoutSetColor(layout::Ptr{uiDrawTextLayout},startChar::Integer,endChar::Integer,r::Cdouble,g::Cdouble,b::Cdouble,a::Cdouble)
-	ccall((:uiDrawTextLayoutSetColor,libui),Nothing,(Ptr{uiDrawTextLayout},Clong,Clong,Cdouble,Cdouble,Cdouble,Cdouble),layout,startChar,endChar,r,g,b,a)
+function uiAttributeColor(a, r, g, b, alpha)
+    ccall((:uiAttributeColor, libui), Nothing, (Ptr{uiAttribute}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}), a, r, g, b, alpha)
 end
 
-function uiDrawText(c::Ptr{uiDrawContext},x::Cdouble,y::Cdouble,layout::Ptr{uiDrawTextLayout})
-	ccall((:uiDrawText,libui),Nothing,(Ptr{uiDrawContext},Cdouble,Cdouble,Ptr{uiDrawTextLayout}),c,x,y,layout)
+function uiNewBackgroundAttribute(r::Cdouble, g::Cdouble, b::Cdouble, a::Cdouble)
+    ccall((:uiNewBackgroundAttribute, libui), Ptr{uiAttribute}, (Cdouble, Cdouble, Cdouble, Cdouble), r, g, b, a)
 end
 
-function uiFontButtonFont(b::Ptr{uiFontButton})
-	ccall((:uiFontButtonFont,libui),Ptr{uiDrawTextFont},(Ptr{uiFontButton},),b)
+function uiNewUnderlineAttribute(u::uiUnderline)
+    ccall((:uiNewUnderlineAttribute, libui), Ptr{uiAttribute}, (uiUnderline,), u)
 end
 
-function uiFontButtonOnChanged(b::Ptr{uiFontButton},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiFontButtonOnChanged,libui),Nothing,(Ptr{uiFontButton},Ptr{Nothing},Ptr{Nothing}),b,f,data)
+function uiAttributeUnderline(a)
+    ccall((:uiAttributeUnderline, libui), uiUnderline, (Ptr{uiAttribute},), a)
+end
+
+function uiNewUnderlineColorAttribute(u::uiUnderlineColor, r::Cdouble, g::Cdouble, b::Cdouble, a::Cdouble)
+    ccall((:uiNewUnderlineColorAttribute, libui), Ptr{uiAttribute}, (uiUnderlineColor, Cdouble, Cdouble, Cdouble, Cdouble), u, r, g, b, a)
+end
+
+function uiAttributeUnderlineColor(a, u, r, g, b, alpha)
+    ccall((:uiAttributeUnderlineColor, libui), Nothing, (Ptr{uiAttribute}, Ptr{uiUnderlineColor}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}), a, u, r, g, b, alpha)
+end
+
+function uiNewOpenTypeFeatures()
+    ccall((:uiNewOpenTypeFeatures, libui), Ptr{uiOpenTypeFeatures}, ())
+end
+
+function uiFreeOpenTypeFeatures(otf)
+    ccall((:uiFreeOpenTypeFeatures, libui), Nothing, (Ptr{uiOpenTypeFeatures},), otf)
+end
+
+function uiOpenTypeFeaturesClone(otf)
+    ccall((:uiOpenTypeFeaturesClone, libui), Ptr{uiOpenTypeFeatures}, (Ptr{uiOpenTypeFeatures},), otf)
+end
+
+function uiOpenTypeFeaturesAdd(otf, a::UInt8, b::UInt8, c::UInt8, d::UInt8, value::UInt32)
+    ccall((:uiOpenTypeFeaturesAdd, libui), Nothing, (Ptr{uiOpenTypeFeatures}, UInt8, UInt8, UInt8, UInt8, UInt32), otf, a, b, c, d, value)
+end
+
+function uiOpenTypeFeaturesRemove(otf, a::UInt8, b::UInt8, c::UInt8, d::UInt8)
+    ccall((:uiOpenTypeFeaturesRemove, libui), Nothing, (Ptr{uiOpenTypeFeatures}, UInt8, UInt8, UInt8, UInt8), otf, a, b, c, d)
+end
+
+function uiOpenTypeFeaturesGet(otf, a::UInt8, b::UInt8, c::UInt8, d::UInt8, value)
+    ccall((:uiOpenTypeFeaturesGet, libui), Cint, (Ptr{uiOpenTypeFeatures}, UInt8, UInt8, UInt8, UInt8, Ptr{UInt32}), otf, a, b, c, d, value)
+end
+
+function uiOpenTypeFeaturesForEach(otf, f::uiOpenTypeFeaturesForEachFunc, data)
+    ccall((:uiOpenTypeFeaturesForEach, libui), Nothing, (Ptr{uiOpenTypeFeatures}, uiOpenTypeFeaturesForEachFunc, Ptr{Void}), otf, f, data)
+end
+
+function uiNewFeaturesAttribute(otf)
+    ccall((:uiNewFeaturesAttribute, libui), Ptr{uiAttribute}, (Ptr{uiOpenTypeFeatures},), otf)
+end
+
+function uiAttributeFeatures(a)
+    ccall((:uiAttributeFeatures, libui), Ptr{uiOpenTypeFeatures}, (Ptr{uiAttribute},), a)
+end
+
+function uiNewAttributedString(initialString)
+    ccall((:uiNewAttributedString, libui), Ptr{uiAttributedString}, (Cstring,), initialString)
+end
+
+function uiFreeAttributedString(s)
+    ccall((:uiFreeAttributedString, libui), Nothing, (Ptr{uiAttributedString},), s)
+end
+
+function uiAttributedStringString(s)
+    ccall((:uiAttributedStringString, libui), Cstring, (Ptr{uiAttributedString},), s)
+end
+
+function uiAttributedStringLen(s)
+    ccall((:uiAttributedStringLen, libui), Csize_t, (Ptr{uiAttributedString},), s)
+end
+
+function uiAttributedStringAppendUnattributed(s, str)
+    ccall((:uiAttributedStringAppendUnattributed, libui), Nothing, (Ptr{uiAttributedString}, Cstring), s, str)
+end
+
+function uiAttributedStringInsertAtUnattributed(s, str, at::Csize_t)
+    ccall((:uiAttributedStringInsertAtUnattributed, libui), Nothing, (Ptr{uiAttributedString}, Cstring, Csize_t), s, str, at)
+end
+
+function uiAttributedStringDelete(s, start::Csize_t, _end::Csize_t)
+    ccall((:uiAttributedStringDelete, libui), Nothing, (Ptr{uiAttributedString}, Csize_t, Csize_t), s, start, _end)
+end
+
+function uiAttributedStringSetAttribute(s, a, start::Csize_t, _end::Csize_t)
+    ccall((:uiAttributedStringSetAttribute, libui), Nothing, (Ptr{uiAttributedString}, Ptr{uiAttribute}, Csize_t, Csize_t), s, a, start, _end)
+end
+
+function uiAttributedStringForEachAttribute(s, f::uiAttributedStringForEachAttributeFunc, data)
+    ccall((:uiAttributedStringForEachAttribute, libui), Nothing, (Ptr{uiAttributedString}, uiAttributedStringForEachAttributeFunc, Ptr{Void}), s, f, data)
+end
+
+function uiAttributedStringNumGraphemes(s)
+    ccall((:uiAttributedStringNumGraphemes, libui), Csize_t, (Ptr{uiAttributedString},), s)
+end
+
+function uiAttributedStringByteIndexToGrapheme(s, pos::Csize_t)
+    ccall((:uiAttributedStringByteIndexToGrapheme, libui), Csize_t, (Ptr{uiAttributedString}, Csize_t), s, pos)
+end
+
+function uiAttributedStringGraphemeToByteIndex(s, pos::Csize_t)
+    ccall((:uiAttributedStringGraphemeToByteIndex, libui), Csize_t, (Ptr{uiAttributedString}, Csize_t), s, pos)
+end
+
+function uiDrawNewTextLayout(params)
+    ccall((:uiDrawNewTextLayout, libui), Ptr{uiDrawTextLayout}, (Ptr{uiDrawTextLayoutParams},), params)
+end
+
+function uiDrawFreeTextLayout(tl)
+    ccall((:uiDrawFreeTextLayout, libui), Nothing, (Ptr{uiDrawTextLayout},), tl)
+end
+
+function uiDrawText(c, tl, x::Cdouble, y::Cdouble)
+    ccall((:uiDrawText, libui), Nothing, (Ptr{uiDrawContext}, Ptr{uiDrawTextLayout}, Cdouble, Cdouble), c, tl, x, y)
+end
+
+function uiDrawTextLayoutExtents(tl, width, height)
+    ccall((:uiDrawTextLayoutExtents, libui), Nothing, (Ptr{uiDrawTextLayout}, Ptr{Cdouble}, Ptr{Cdouble}), tl, width, height)
+end
+
+function uiFontButtonFont(b, desc)
+    ccall((:uiFontButtonFont, libui), Nothing, (Ptr{uiFontButton}, Ptr{uiFontDescriptor}), b, desc)
+end
+
+function uiFontButtonOnChanged(b, f, data)
+    ccall((:uiFontButtonOnChanged, libui), Nothing, (Ptr{uiFontButton}, Ptr{Void}, Ptr{Void}), b, f, data)
 end
 
 function uiNewFontButton()
-	ccall((:uiNewFontButton,libui),Ptr{uiFontButton},())
+    ccall((:uiNewFontButton, libui), Ptr{uiFontButton}, ())
 end
 
-function uiColorButtonColor(b::Ptr{uiColorButton},r::Ptr{Cdouble},g::Ptr{Cdouble},bl::Ptr{Cdouble},a::Ptr{Cdouble})
-	ccall((:uiColorButtonColor,libui),Nothing,(Ptr{uiColorButton},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble},Ptr{Cdouble}),b,r,g,bl,a)
+function uiFreeFontButtonFont(desc)
+    ccall((:uiFreeFontButtonFont, libui), Nothing, (Ptr{uiFontDescriptor},), desc)
 end
 
-function uiColorButtonSetColor(b::Ptr{uiColorButton},r::Cdouble,g::Cdouble,bl::Cdouble,a::Cdouble)
-	ccall((:uiColorButtonSetColor,libui),Nothing,(Ptr{uiColorButton},Cdouble,Cdouble,Cdouble,Cdouble),b,r,g,bl,a)
+function uiColorButtonColor(b, r, g, bl, a)
+    ccall((:uiColorButtonColor, libui), Nothing, (Ptr{uiColorButton}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}), b, r, g, bl, a)
 end
 
-function uiColorButtonOnChanged(b::Ptr{uiColorButton},f::Ptr{Nothing},data::Ptr{Nothing})
-	ccall((:uiColorButtonOnChanged,libui),Nothing,(Ptr{uiColorButton},Ptr{Nothing},Ptr{Nothing}),b,f,data)
+function uiColorButtonSetColor(b, r::Cdouble, g::Cdouble, bl::Cdouble, a::Cdouble)
+    ccall((:uiColorButtonSetColor, libui), Nothing, (Ptr{uiColorButton}, Cdouble, Cdouble, Cdouble, Cdouble), b, r, g, bl, a)
+end
+
+function uiColorButtonOnChanged(b, f, data)
+    ccall((:uiColorButtonOnChanged, libui), Nothing, (Ptr{uiColorButton}, Ptr{Void}, Ptr{Void}), b, f, data)
 end
 
 function uiNewColorButton()
-	ccall((:uiNewColorButton,libui),Ptr{uiColorButton},())
+    ccall((:uiNewColorButton, libui), Ptr{uiColorButton}, ())
+end
+
+function uiFormAppend(f, label, c, stretchy::Cint)
+    ccall((:uiFormAppend, libui), Nothing, (Ptr{uiForm}, Cstring, Ptr{uiControl}, Cint), f, label, c, stretchy)
+end
+
+function uiFormDelete(f, index::Cint)
+    ccall((:uiFormDelete, libui), Nothing, (Ptr{uiForm}, Cint), f, index)
+end
+
+function uiFormPadded(f)
+    ccall((:uiFormPadded, libui), Cint, (Ptr{uiForm},), f)
+end
+
+function uiFormSetPadded(f, padded::Cint)
+    ccall((:uiFormSetPadded, libui), Nothing, (Ptr{uiForm}, Cint), f, padded)
+end
+
+function uiNewForm()
+    ccall((:uiNewForm, libui), Ptr{uiForm}, ())
+end
+
+function uiGridAppend(g, c, left::Cint, top::Cint, xspan::Cint, yspan::Cint, hexpand::Cint, halign::uiAlign, vexpand::Cint, valign::uiAlign)
+    ccall((:uiGridAppend, libui), Nothing, (Ptr{uiGrid}, Ptr{uiControl}, Cint, Cint, Cint, Cint, Cint, uiAlign, Cint, uiAlign), g, c, left, top, xspan, yspan, hexpand, halign, vexpand, valign)
+end
+
+function uiGridInsertAt(g, c, existing, at::uiAt, xspan::Cint, yspan::Cint, hexpand::Cint, halign::uiAlign, vexpand::Cint, valign::uiAlign)
+    ccall((:uiGridInsertAt, libui), Nothing, (Ptr{uiGrid}, Ptr{uiControl}, Ptr{uiControl}, uiAt, Cint, Cint, Cint, uiAlign, Cint, uiAlign), g, c, existing, at, xspan, yspan, hexpand, halign, vexpand, valign)
+end
+
+function uiGridPadded(g)
+    ccall((:uiGridPadded, libui), Cint, (Ptr{uiGrid},), g)
+end
+
+function uiGridSetPadded(g, padded::Cint)
+    ccall((:uiGridSetPadded, libui), Nothing, (Ptr{uiGrid}, Cint), g, padded)
+end
+
+function uiNewGrid()
+    ccall((:uiNewGrid, libui), Ptr{uiGrid}, ())
+end
+
+function uiNewImage(width::Cdouble, height::Cdouble)
+    ccall((:uiNewImage, libui), Ptr{uiImage}, (Cdouble, Cdouble), width, height)
+end
+
+function uiFreeImage(i)
+    ccall((:uiFreeImage, libui), Nothing, (Ptr{uiImage},), i)
+end
+
+function uiImageAppend(i, pixels, pixelWidth::Cint, pixelHeight::Cint, byteStride::Cint)
+    ccall((:uiImageAppend, libui), Nothing, (Ptr{uiImage}, Ptr{Void}, Cint, Cint, Cint), i, pixels, pixelWidth, pixelHeight, byteStride)
+end
+
+function uiFreeTableValue(v)
+    ccall((:uiFreeTableValue, libui), Nothing, (Ptr{uiTableValue},), v)
+end
+
+function uiTableValueGetType(v)
+    ccall((:uiTableValueGetType, libui), uiTableValueType, (Ptr{uiTableValue},), v)
+end
+
+function uiNewTableValueString(str)
+    ccall((:uiNewTableValueString, libui), Ptr{uiTableValue}, (Cstring,), str)
+end
+
+function uiTableValueString(v)
+    ccall((:uiTableValueString, libui), Cstring, (Ptr{uiTableValue},), v)
+end
+
+function uiNewTableValueImage(img)
+    ccall((:uiNewTableValueImage, libui), Ptr{uiTableValue}, (Ptr{uiImage},), img)
+end
+
+function uiTableValueImage(v)
+    ccall((:uiTableValueImage, libui), Ptr{uiImage}, (Ptr{uiTableValue},), v)
+end
+
+function uiNewTableValueInt(i::Cint)
+    ccall((:uiNewTableValueInt, libui), Ptr{uiTableValue}, (Cint,), i)
+end
+
+function uiTableValueInt(v)
+    ccall((:uiTableValueInt, libui), Cint, (Ptr{uiTableValue},), v)
+end
+
+function uiNewTableValueColor(r::Cdouble, g::Cdouble, b::Cdouble, a::Cdouble)
+    ccall((:uiNewTableValueColor, libui), Ptr{uiTableValue}, (Cdouble, Cdouble, Cdouble, Cdouble), r, g, b, a)
+end
+
+function uiTableValueColor(v, r, g, b, a)
+    ccall((:uiTableValueColor, libui), Nothing, (Ptr{uiTableValue}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}, Ptr{Cdouble}), v, r, g, b, a)
+end
+
+function uiNewTableModel(mh)
+    ccall((:uiNewTableModel, libui), Ptr{uiTableModel}, (Ptr{uiTableModelHandler},), mh)
+end
+
+function uiFreeTableModel(m)
+    ccall((:uiFreeTableModel, libui), Nothing, (Ptr{uiTableModel},), m)
+end
+
+function uiTableModelRowInserted(m, newIndex::Cint)
+    ccall((:uiTableModelRowInserted, libui), Nothing, (Ptr{uiTableModel}, Cint), m, newIndex)
+end
+
+function uiTableModelRowChanged(m, index::Cint)
+    ccall((:uiTableModelRowChanged, libui), Nothing, (Ptr{uiTableModel}, Cint), m, index)
+end
+
+function uiTableModelRowDeleted(m, oldIndex::Cint)
+    ccall((:uiTableModelRowDeleted, libui), Nothing, (Ptr{uiTableModel}, Cint), m, oldIndex)
+end
+
+function uiTableAppendTextColumn(t, name, textModelColumn::Cint, textEditableModelColumn::Cint, textParams)
+    ccall((:uiTableAppendTextColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint, Cint, Ptr{uiTableTextColumnOptionalParams}), t, name, textModelColumn, textEditableModelColumn, textParams)
+end
+
+function uiTableAppendImageColumn(t, name, imageModelColumn::Cint)
+    ccall((:uiTableAppendImageColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint), t, name, imageModelColumn)
+end
+
+function uiTableAppendImageTextColumn(t, name, imageModelColumn::Cint, textModelColumn::Cint, textEditableModelColumn::Cint, textParams)
+    ccall((:uiTableAppendImageTextColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint, Cint, Cint, Ptr{uiTableTextColumnOptionalParams}), t, name, imageModelColumn, textModelColumn, textEditableModelColumn, textParams)
+end
+
+function uiTableAppendCheckboxColumn(t, name, checkboxModelColumn::Cint, checkboxEditableModelColumn::Cint)
+    ccall((:uiTableAppendCheckboxColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint, Cint), t, name, checkboxModelColumn, checkboxEditableModelColumn)
+end
+
+function uiTableAppendCheckboxTextColumn(t, name, checkboxModelColumn::Cint, checkboxEditableModelColumn::Cint, textModelColumn::Cint, textEditableModelColumn::Cint, textParams)
+    ccall((:uiTableAppendCheckboxTextColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint, Cint, Cint, Cint, Ptr{uiTableTextColumnOptionalParams}), t, name, checkboxModelColumn, checkboxEditableModelColumn, textModelColumn, textEditableModelColumn, textParams)
+end
+
+function uiTableAppendProgressBarColumn(t, name, progressModelColumn::Cint)
+    ccall((:uiTableAppendProgressBarColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint), t, name, progressModelColumn)
+end
+
+function uiTableAppendButtonColumn(t, name, buttonModelColumn::Cint, buttonClickableModelColumn::Cint)
+    ccall((:uiTableAppendButtonColumn, libui), Nothing, (Ptr{uiTable}, Cstring, Cint, Cint), t, name, buttonModelColumn, buttonClickableModelColumn)
+end
+
+function uiNewTable(params)
+    ccall((:uiNewTable, libui), Ptr{uiTable}, (Ptr{uiTableParams},), params)
 end
