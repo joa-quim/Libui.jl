@@ -49,11 +49,11 @@ const uiDrawDefaultMiterLimit = 10.0
 # Skipping MacroDefinition: uiColorButton ( this ) ( ( uiColorButton * ) ( this ) )
 
 
-type uiInitOptions
+mutable struct uiInitOptions
 	Size::Csize_t
 end
 
-type uiControl
+mutable struct uiControl
 	Signature::UInt32
 	OSSignature::UInt32
 	TypeSignature::UInt32
