@@ -9,18 +9,29 @@ const libui = library_dependency("libui")
 const libuiVer = "4"
 const libuiFilebase = "alpha$(libuiVer)"
 
-provides(Sources,
-         URI("http://w3.ualg.pt/%7Ejluis/t/$(libuiFilebase).tar.gz"),
-         libui)
-
 const prefix = joinpath(BinDeps.depsdir(libui), "usr")
+const srcdir = joinpath(BinDeps.depsdir(libui), "src")
 
+#TODO: Switch download based on architecture as well as platform. Otherwise,
+# the installation below will incorrectly claim to be successful.
 const srcpath = if Sys.islinux()
-    joinpath(BinDeps.srcdir(libui), libuiFilebase, "linux_amd64", "shared", "libui.so.0")
+    provides(Sources,
+             URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-linux-amd64-shared.tgz"),
+             unpacked_dir = srcdir,
+             libui)
+    joinpath(BinDeps.srcdir(libui), "libui.so.0")
 elseif Sys.isapple()
-    joinpath(BinDeps.srcdir(libui), libuiFilebase, "darwin_amd64", "shared", "libui.A.dylib")
+    provides(Sources,
+             URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-darwin-amd64-shared.tgz"),
+             unpacked_dir = srcdir,
+             libui)
+    joinpath(BinDeps.srcdir(libui), "libui.A.dylib")
 elseif Sys.iswindows() #TODO: Check this on a CI service
-    joinpath(BinDeps.srcdir(libui), libuiFilebase, "windows_amd64", "shared", "libui.dll")
+    provides(Sources,
+             URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-windows-amd64-shared.tgz"),
+             unpacked_dir = srcdir,
+             libui)
+    joinpath(BinDeps.srcdir(libui), "libui.dll")
 else
     error("Platform not supported.")
 end
@@ -39,7 +50,7 @@ provides(SimpleBuild,
          (@build_steps begin
           GetSources(libui)
           CreateDirectory(joinpath(prefix, "lib"))
-          `cp $(srcpath) $(joinpath(prefix, "lib", binaryNameTarget))`
+          `cp -v $(srcpath) $(joinpath(prefix, "lib", binaryNameTarget))`
           end
           ), libui)
 
