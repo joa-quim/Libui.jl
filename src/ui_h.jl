@@ -49,11 +49,11 @@ const uiDrawDefaultMiterLimit = 10.0
 # Skipping MacroDefinition: uiColorButton ( this ) ( ( uiColorButton * ) ( this ) )
 
 
-type uiInitOptions
+mutable struct uiInitOptions
 	Size::Csize_t
 end
 
-type uiControl
+mutable struct uiControl
 	Signature::UInt32
 	OSSignature::UInt32
 	TypeSignature::UInt32
@@ -70,67 +70,67 @@ type uiControl
 	Disable::Ptr{Nothing}
 end
 
-type uiWindow
+mutable struct uiWindow
 end
 
-type uiButton
+mutable struct uiButton
 end
 
-type uiBox
+mutable struct uiBox
 end
 
-type uiEntry
+mutable struct uiEntry
 end
 
-type uiCheckbox
+mutable struct uiCheckbox
 end
 
-type uiLabel
+mutable struct uiLabel
 end
 
-type uiTab
+mutable struct uiTab
 end
 
-type uiGroup
+mutable struct uiGroup
 end
 
-type uiSpinbox
+mutable struct uiSpinbox
 end
 
-type uiProgressBar
+mutable struct uiProgressBar
 end
 
-type uiSlider
+mutable struct uiSlider
 end
 
-type uiSeparator
+mutable struct uiSeparator
 end
 
-type uiCombobox
+mutable struct uiCombobox
 end
 
-type uiEditableCombobox
+mutable struct uiEditableCombobox
 end
 
-type uiRadioButtons
+mutable struct uiRadioButtons
 end
 
-type uiDateTimePicker
+mutable struct uiDateTimePicker
 end
 
-type uiMultilineEntry
+mutable struct uiMultilineEntry
 end
 
-type uiMenuItem
+mutable struct uiMenuItem
 end
 
-type uiMenu
+mutable struct uiMenu
 end
 
-type uiArea
+mutable struct uiArea
 end
 
-type uiAreaHandler
+mutable struct uiAreaHandler
 	Draw::Ptr{Nothing}
 	MouseEvent::Ptr{Nothing}
 	MouseCrossed::Ptr{Nothing}
@@ -138,10 +138,10 @@ type uiAreaHandler
 	KeyEvent::Ptr{Nothing}
 end
 
-type uiDrawContext
+mutable struct uiDrawContext
 end
 
-type uiAreaDrawParams
+mutable struct uiAreaDrawParams
 	Context::Ptr{uiDrawContext}
 	AreaWidth::Cdouble
 	AreaHeight::Cdouble
@@ -151,7 +151,7 @@ type uiAreaDrawParams
 	ClipHeight::Cdouble
 end
 
-type uiAreaMouseEvent
+mutable struct uiAreaMouseEvent
 	X::Cdouble
 	Y::Cdouble
 	AreaWidth::Cdouble
@@ -163,7 +163,7 @@ type uiAreaMouseEvent
 	Held1To64::UInt64
 end
 
-type uiAreaKeyEvent
+mutable struct uiAreaKeyEvent
 	Key::UInt8
 	ExtKey::UInt32
 	Modifier::UInt32
@@ -171,12 +171,12 @@ type uiAreaKeyEvent
 	Up::Cint
 end
 
-type uiDrawPath
+mutable struct uiDrawPath
 end
 
 const uiDrawBrushType = UInt32
 
-type uiDrawBrushGradientStop
+mutable struct uiDrawBrushGradientStop
 	Pos::Cdouble
 	R::Cdouble
 	G::Cdouble
@@ -184,7 +184,7 @@ type uiDrawBrushGradientStop
 	A::Cdouble
 end
 
-type uiDrawBrush
+mutable struct uiDrawBrush
 	Type::uiDrawBrushType
 	R::Cdouble
 	G::Cdouble
@@ -202,7 +202,7 @@ end
 const uiDrawLineCap = UInt32
 const uiDrawLineJoin = UInt32
 
-type uiDrawStrokeParams
+mutable struct uiDrawStrokeParams
 	Cap::UInt32
 	Join::UInt32
 	Thickness::Cdouble
@@ -212,7 +212,7 @@ type uiDrawStrokeParams
 	DashPhase::Cdouble
 end
 
-type uiDrawMatrix
+mutable struct uiDrawMatrix
 	M11::Cdouble
 	M12::Cdouble
 	M21::Cdouble
@@ -251,20 +251,20 @@ const uiDrawFillModeWinding = (UInt32)(0)
 const uiDrawFillModeAlternate = (UInt32)(1)
 # end enum ANONYMOUS_4
 
-type uiDrawFontFamilies
+mutable struct uiDrawFontFamilies
 end
 
-type uiDrawTextLayout
+mutable struct uiDrawTextLayout
 end
 
-type uiDrawTextFont
+mutable struct uiDrawTextFont
 end
 
 const uiDrawTextWeight = UInt32
 const uiDrawTextItalic = UInt32
 const uiDrawTextStretch = UInt32
 
-type uiDrawTextFontDescriptor
+mutable struct uiDrawTextFontDescriptor
 	Family::Ptr{UInt8}
 	Size::Cdouble
 	Weight::UInt32
@@ -272,7 +272,7 @@ type uiDrawTextFontDescriptor
 	Stretch::UInt32
 end
 
-type uiDrawTextFontMetrics
+mutable struct uiDrawTextFontMetrics
 	Ascent::Cdouble
 	Descent::Cdouble
 	Leading::Cdouble
@@ -366,8 +366,8 @@ const uiExtKeyNMultiply = (UInt32)(38)
 const uiExtKeyNDivide = (UInt32)(39)
 # end enum ANONYMOUS_9
 
-type uiFontButton
+mutable struct uiFontButton
 end
 
-type uiColorButton
+mutable struct uiColorButton
 end
