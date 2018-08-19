@@ -7,7 +7,7 @@ end
 
 const libui = library_dependency("libui")
 const libuiVer = "4"
-const libuiFilebase = "libui-alpha$(libuiVer)"
+const libuiFilebase = "alpha$(libuiVer)"
 
 provides(Sources,
          URI("https://github.com/andlabs/libui/archive/$(libuiFilebase).tar.gz"),
