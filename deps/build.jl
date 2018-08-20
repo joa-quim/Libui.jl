@@ -10,30 +10,21 @@ const libuiVer = "4"
 const libuiFilebase = "alpha$(libuiVer)"
 
 const prefix = joinpath(BinDeps.depsdir(libui), "usr")
-const srcdir = joinpath(BinDeps.depsdir(libui), "src")
 
-#TODO: Switch download based on architecture as well as platform. Otherwise,
-# the installation below will incorrectly claim to be successful.
+provides(Sources,
+         URI("http://w3.ualg.pt/%7Ejluis/t/$(libuiFilebase).tar.gz"),
+         libui)
+
+const prefix = joinpath(BinDeps.depsdir(libui), "usr")
+
 const srcpath = if Sys.islinux()
-	provides(Sources,
-			 URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-linux-amd64-shared.tgz"),
-			 unpacked_dir = srcdir,
-			 libui)
-	joinpath(BinDeps.srcdir(libui), "libui.so.0")
+    joinpath(BinDeps.srcdir(libui), libuiFilebase, "linux_amd64", "shared", "libui.so.0")
 elseif Sys.isapple()
-	provides(Sources,
-			 URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-darwin-amd64-shared.tgz"),
-			 unpacked_dir = srcdir,
-			 libui)
-	joinpath(BinDeps.srcdir(libui), "libui.A.dylib")
+    joinpath(BinDeps.srcdir(libui), libuiFilebase, "darwin_amd64", "shared", "libui.A.dylib")
 elseif Sys.iswindows() #TODO: Check this on a CI service
-	provides(Sources,
-			 URI("https://github.com/andlabs/libui/releases/download/alpha$(libuiVer)/libui-$(libuiFilebase)-windows-amd64-shared.tgz"),
-			 unpacked_dir = srcdir,
-			 libui)
-	joinpath(BinDeps.srcdir(libui), "libui.dll")
+    joinpath(BinDeps.srcdir(libui), libuiFilebase, "windows_amd64", "shared", "libui.dll")
 else
-	error("Platform not supported.")
+    error("Platform not supported.")
 end
 
 const binaryNameTarget = if Sys.islinux()
