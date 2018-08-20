@@ -1,6 +1,6 @@
 # Automatically generated using Clang.jl wrap_c, version 0.0.0
 @static if VERSION < v"0.7-"
-	using Compat: Nothing
+  using Compat: Nothing
 end
 
 const OBJC_NEW_PROPERTIES = 1
@@ -25,14 +25,14 @@ const uiPi = 3.141592653589793
 # Skipping MacroDefinition: uiWindow ( this ) ( ( uiWindow * ) ( this ) )
 # Skipping MacroDefinition: uiButton ( this ) ( ( uiButton * ) ( this ) )
 # Skipping MacroDefinition: uiBox ( this ) ( ( uiBox * ) ( this ) )
-# Skipping MacroDefinition: uiEntry ( this ) ( ( uiEntry * ) ( this ) )
 # Skipping MacroDefinition: uiCheckbox ( this ) ( ( uiCheckbox * ) ( this ) )
+# Skipping MacroDefinition: uiEntry ( this ) ( ( uiEntry * ) ( this ) )
 # Skipping MacroDefinition: uiLabel ( this ) ( ( uiLabel * ) ( this ) )
 # Skipping MacroDefinition: uiTab ( this ) ( ( uiTab * ) ( this ) )
 # Skipping MacroDefinition: uiGroup ( this ) ( ( uiGroup * ) ( this ) )
 # Skipping MacroDefinition: uiSpinbox ( this ) ( ( uiSpinbox * ) ( this ) )
-# Skipping MacroDefinition: uiProgressBar ( this ) ( ( uiProgressBar * ) ( this ) )
 # Skipping MacroDefinition: uiSlider ( this ) ( ( uiSlider * ) ( this ) )
+# Skipping MacroDefinition: uiProgressBar ( this ) ( ( uiProgressBar * ) ( this ) )
 # Skipping MacroDefinition: uiSeparator ( this ) ( ( uiSeparator * ) ( this ) )
 # Skipping MacroDefinition: uiCombobox ( this ) ( ( uiCombobox * ) ( this ) )
 # Skipping MacroDefinition: uiEditableCombobox ( this ) ( ( uiEditableCombobox * ) ( this ) )
@@ -47,7 +47,21 @@ const uiDrawDefaultMiterLimit = 10.0
 
 # Skipping MacroDefinition: uiFontButton ( this ) ( ( uiFontButton * ) ( this ) )
 # Skipping MacroDefinition: uiColorButton ( this ) ( ( uiColorButton * ) ( this ) )
+# Skipping MacroDefinition: uiForm ( this ) ( ( uiForm * ) ( this ) )
+# Skipping MacroDefinition: uiGrid ( this ) ( ( uiGrid * ) ( this ) )
 
+const uiTableModelColumnNeverEditable = -1
+const uiTableModelColumnAlwaysEditable = -2
+
+# Skipping MacroDefinition: uiTable ( this ) ( ( uiTable * ) ( this ) )
+
+const uiForEach = UInt32
+
+# begin enum ANONYMOUS_1
+const ANONYMOUS_1 = UInt32
+const uiForEachContinue = (UInt32)(0)
+const uiForEachStop = (UInt32)(1)
+# end enum ANONYMOUS_1
 
 mutable struct uiInitOptions
 	Size::Csize_t
@@ -79,10 +93,10 @@ end
 mutable struct uiBox
 end
 
-mutable struct uiEntry
+mutable struct uiCheckbox
 end
 
-mutable struct uiCheckbox
+mutable struct uiEntry
 end
 
 mutable struct uiLabel
@@ -97,10 +111,10 @@ end
 mutable struct uiSpinbox
 end
 
-mutable struct uiProgressBar
+mutable struct uiSlider
 end
 
-mutable struct uiSlider
+mutable struct uiProgressBar
 end
 
 mutable struct uiSeparator
@@ -113,6 +127,9 @@ mutable struct uiEditableCombobox
 end
 
 mutable struct uiRadioButtons
+end
+
+mutable struct tm
 end
 
 mutable struct uiDateTimePicker
@@ -151,25 +168,43 @@ mutable struct uiAreaDrawParams
 	ClipHeight::Cdouble
 end
 
+const uiModifiers = UInt32
+
 mutable struct uiAreaMouseEvent
 	X::Cdouble
 	Y::Cdouble
 	AreaWidth::Cdouble
 	AreaHeight::Cdouble
-	Down::Culong
-	Up::Culong
-	Count::Culong
-	Modifiers::UInt32
+	Down::Cint
+	Up::Cint
+	Count::Cint
+	Modifiers::uiModifiers
 	Held1To64::UInt64
 end
 
+const uiExtKey = UInt32
+
 mutable struct uiAreaKeyEvent
 	Key::UInt8
-	ExtKey::UInt32
-	Modifier::UInt32
-	Modifiers::UInt32
+	ExtKey::uiExtKey
+	Modifier::uiModifiers
+	Modifiers::uiModifiers
 	Up::Cint
 end
+
+const uiWindowResizeEdge = UInt32
+
+# begin enum ANONYMOUS_2
+const ANONYMOUS_2 = UInt32
+const uiWindowResizeEdgeLeft = (UInt32)(0)
+const uiWindowResizeEdgeTop = (UInt32)(1)
+const uiWindowResizeEdgeRight = (UInt32)(2)
+const uiWindowResizeEdgeBottom = (UInt32)(3)
+const uiWindowResizeEdgeTopLeft = (UInt32)(4)
+const uiWindowResizeEdgeTopRight = (UInt32)(5)
+const uiWindowResizeEdgeBottomLeft = (UInt32)(6)
+const uiWindowResizeEdgeBottomRight = (UInt32)(7)
+# end enum ANONYMOUS_2
 
 mutable struct uiDrawPath
 end
@@ -203,8 +238,8 @@ const uiDrawLineCap = UInt32
 const uiDrawLineJoin = UInt32
 
 mutable struct uiDrawStrokeParams
-	Cap::UInt32
-	Join::UInt32
+	Cap::uiDrawLineCap
+	Join::uiDrawLineJoin
 	Thickness::Cdouble
 	MiterLimit::Cdouble
 	Dashes::Ptr{Cdouble}
@@ -221,110 +256,168 @@ mutable struct uiDrawMatrix
 	M32::Cdouble
 end
 
-# begin enum ANONYMOUS_1
-const ANONYMOUS_1 = UInt32
+# begin enum ANONYMOUS_3
+const ANONYMOUS_3 = UInt32
 const uiDrawBrushTypeSolid = (UInt32)(0)
 const uiDrawBrushTypeLinearGradient = (UInt32)(1)
 const uiDrawBrushTypeRadialGradient = (UInt32)(2)
 const uiDrawBrushTypeImage = (UInt32)(3)
-# end enum ANONYMOUS_1
-
-# begin enum ANONYMOUS_2
-const ANONYMOUS_2 = UInt32
-const uiDrawLineCapFlat = (UInt32)(0)
-const uiDrawLineCapRound = (UInt32)(1)
-const uiDrawLineCapSquare = (UInt32)(2)
-# end enum ANONYMOUS_2
-
-# begin enum ANONYMOUS_3
-const ANONYMOUS_3 = UInt32
-const uiDrawLineJoinMiter = (UInt32)(0)
-const uiDrawLineJoinRound = (UInt32)(1)
-const uiDrawLineJoinBevel = (UInt32)(2)
 # end enum ANONYMOUS_3
-
-const uiDrawFillMode = UInt32
 
 # begin enum ANONYMOUS_4
 const ANONYMOUS_4 = UInt32
-const uiDrawFillModeWinding = (UInt32)(0)
-const uiDrawFillModeAlternate = (UInt32)(1)
+const uiDrawLineCapFlat = (UInt32)(0)
+const uiDrawLineCapRound = (UInt32)(1)
+const uiDrawLineCapSquare = (UInt32)(2)
 # end enum ANONYMOUS_4
 
-mutable struct uiDrawFontFamilies
+# begin enum ANONYMOUS_5
+const ANONYMOUS_5 = UInt32
+const uiDrawLineJoinMiter = (UInt32)(0)
+const uiDrawLineJoinRound = (UInt32)(1)
+const uiDrawLineJoinBevel = (UInt32)(2)
+# end enum ANONYMOUS_5
+
+const uiDrawFillMode = UInt32
+
+# begin enum ANONYMOUS_6
+const ANONYMOUS_6 = UInt32
+const uiDrawFillModeWinding = (UInt32)(0)
+const uiDrawFillModeAlternate = (UInt32)(1)
+# end enum ANONYMOUS_6
+
+mutable struct uiAttribute
+end
+
+const uiAttributeType = UInt32
+
+# begin enum ANONYMOUS_7
+const ANONYMOUS_7 = UInt32
+const uiAttributeTypeFamily = (UInt32)(0)
+const uiAttributeTypeSize = (UInt32)(1)
+const uiAttributeTypeWeight = (UInt32)(2)
+const uiAttributeTypeItalic = (UInt32)(3)
+const uiAttributeTypeStretch = (UInt32)(4)
+const uiAttributeTypeColor = (UInt32)(5)
+const uiAttributeTypeBackground = (UInt32)(6)
+const uiAttributeTypeUnderline = (UInt32)(7)
+const uiAttributeTypeUnderlineColor = (UInt32)(8)
+const uiAttributeTypeFeatures = (UInt32)(9)
+# end enum ANONYMOUS_7
+
+const uiTextWeight = UInt32
+
+# begin enum ANONYMOUS_8
+const ANONYMOUS_8 = UInt32
+const uiTextWeightMinimum = (UInt32)(0)
+const uiTextWeightThin = (UInt32)(100)
+const uiTextWeightUltraLight = (UInt32)(200)
+const uiTextWeightLight = (UInt32)(300)
+const uiTextWeightBook = (UInt32)(350)
+const uiTextWeightNormal = (UInt32)(400)
+const uiTextWeightMedium = (UInt32)(500)
+const uiTextWeightSemiBold = (UInt32)(600)
+const uiTextWeightBold = (UInt32)(700)
+const uiTextWeightUltraBold = (UInt32)(800)
+const uiTextWeightHeavy = (UInt32)(900)
+const uiTextWeightUltraHeavy = (UInt32)(950)
+const uiTextWeightMaximum = (UInt32)(1000)
+# end enum ANONYMOUS_8
+
+const uiTextItalic = UInt32
+
+# begin enum ANONYMOUS_9
+const ANONYMOUS_9 = UInt32
+const uiTextItalicNormal = (UInt32)(0)
+const uiTextItalicOblique = (UInt32)(1)
+const uiTextItalicItalic = (UInt32)(2)
+# end enum ANONYMOUS_9
+
+const uiTextStretch = UInt32
+
+# begin enum ANONYMOUS_10
+const ANONYMOUS_10 = UInt32
+const uiTextStretchUltraCondensed = (UInt32)(0)
+const uiTextStretchExtraCondensed = (UInt32)(1)
+const uiTextStretchCondensed = (UInt32)(2)
+const uiTextStretchSemiCondensed = (UInt32)(3)
+const uiTextStretchNormal = (UInt32)(4)
+const uiTextStretchSemiExpanded = (UInt32)(5)
+const uiTextStretchExpanded = (UInt32)(6)
+const uiTextStretchExtraExpanded = (UInt32)(7)
+const uiTextStretchUltraExpanded = (UInt32)(8)
+# end enum ANONYMOUS_10
+
+const uiUnderline = UInt32
+
+# begin enum ANONYMOUS_11
+const ANONYMOUS_11 = UInt32
+const uiUnderlineNone = (UInt32)(0)
+const uiUnderlineSingle = (UInt32)(1)
+const uiUnderlineDouble = (UInt32)(2)
+const uiUnderlineSuggestion = (UInt32)(3)
+# end enum ANONYMOUS_11
+
+const uiUnderlineColor = UInt32
+
+# begin enum ANONYMOUS_12
+const ANONYMOUS_12 = UInt32
+const uiUnderlineColorCustom = (UInt32)(0)
+const uiUnderlineColorSpelling = (UInt32)(1)
+const uiUnderlineColorGrammar = (UInt32)(2)
+const uiUnderlineColorAuxiliary = (UInt32)(3)
+# end enum ANONYMOUS_12
+
+mutable struct uiOpenTypeFeatures
+end
+
+const uiOpenTypeFeaturesForEachFunc = Ptr{Nothing}
+
+mutable struct uiAttributedString
+end
+
+const uiAttributedStringForEachAttributeFunc = Ptr{Nothing}
+
+mutable struct uiFontDescriptor
+	Family::Cstring
+	Size::Cdouble
+	Weight::uiTextWeight
+	Italic::uiTextItalic
+	Stretch::uiTextStretch
 end
 
 mutable struct uiDrawTextLayout
 end
 
-mutable struct uiDrawTextFont
+const uiDrawTextAlign = UInt32
+
+# begin enum ANONYMOUS_13
+const ANONYMOUS_13 = UInt32
+const uiDrawTextAlignLeft = (UInt32)(0)
+const uiDrawTextAlignCenter = (UInt32)(1)
+const uiDrawTextAlignRight = (UInt32)(2)
+# end enum ANONYMOUS_13
+
+mutable struct uiDrawTextLayoutParams
+	String::Ptr{uiAttributedString}
+	DefaultFont::Ptr{uiFontDescriptor}
+	Width::Cdouble
+	Align::uiDrawTextAlign
 end
 
-const uiDrawTextWeight = UInt32
-const uiDrawTextItalic = UInt32
-const uiDrawTextStretch = UInt32
-
-mutable struct uiDrawTextFontDescriptor
-	Family::Ptr{UInt8}
-	Size::Cdouble
-	Weight::UInt32
-	Italic::UInt32
-	Stretch::UInt32
+mutable struct uiFontButton
 end
 
-mutable struct uiDrawTextFontMetrics
-	Ascent::Cdouble
-	Descent::Cdouble
-	Leading::Cdouble
-	UnderlinePos::Cdouble
-	UnderlineThickness::Cdouble
-end
-
-# begin enum ANONYMOUS_5
-const ANONYMOUS_5 = UInt32
-const uiDrawTextWeightThin = (UInt32)(0)
-const uiDrawTextWeightUltraLight = (UInt32)(1)
-const uiDrawTextWeightLight = (UInt32)(2)
-const uiDrawTextWeightBook = (UInt32)(3)
-const uiDrawTextWeightNormal = (UInt32)(4)
-const uiDrawTextWeightMedium = (UInt32)(5)
-const uiDrawTextWeightSemiBold = (UInt32)(6)
-const uiDrawTextWeightBold = (UInt32)(7)
-const uiDrawTextWeightUtraBold = (UInt32)(8)
-const uiDrawTextWeightHeavy = (UInt32)(9)
-const uiDrawTextWeightUltraHeavy = (UInt32)(10)
-# end enum ANONYMOUS_5
-
-# begin enum ANONYMOUS_6
-const ANONYMOUS_6 = UInt32
-const uiDrawTextItalicNormal = (UInt32)(0)
-const uiDrawTextItalicOblique = (UInt32)(1)
-const uiDrawTextItalicItalic = (UInt32)(2)
-# end enum ANONYMOUS_6
-
-# begin enum ANONYMOUS_7
-const ANONYMOUS_7 = UInt32
-const uiDrawTextStretchUltraCondensed = (UInt32)(0)
-const uiDrawTextStretchExtraCondensed = (UInt32)(1)
-const uiDrawTextStretchCondensed = (UInt32)(2)
-const uiDrawTextStretchSemiCondensed = (UInt32)(3)
-const uiDrawTextStretchNormal = (UInt32)(4)
-const uiDrawTextStretchSemiExpanded = (UInt32)(5)
-const uiDrawTextStretchExpanded = (UInt32)(6)
-const uiDrawTextStretchExtraExpanded = (UInt32)(7)
-const uiDrawTextStretchUltraExpanded = (UInt32)(8)
-# end enum ANONYMOUS_7
-
-# begin enum ANONYMOUS_8
-const ANONYMOUS_8 = UInt32
+# begin enum ANONYMOUS_14
+const ANONYMOUS_14 = UInt32
 const uiModifierCtrl = (UInt32)(1)
 const uiModifierAlt = (UInt32)(2)
 const uiModifierShift = (UInt32)(4)
 const uiModifierSuper = (UInt32)(8)
-# end enum ANONYMOUS_8
+# end enum ANONYMOUS_14
 
-# begin enum ANONYMOUS_9
-const ANONYMOUS_9 = UInt32
+# begin enum ANONYMOUS_15
+const ANONYMOUS_15 = UInt32
 const uiExtKeyEscape = (UInt32)(1)
 const uiExtKeyInsert = (UInt32)(2)
 const uiExtKeyDelete = (UInt32)(3)
@@ -364,10 +457,72 @@ const uiExtKeyNAdd = (UInt32)(36)
 const uiExtKeyNSubtract = (UInt32)(37)
 const uiExtKeyNMultiply = (UInt32)(38)
 const uiExtKeyNDivide = (UInt32)(39)
-# end enum ANONYMOUS_9
-
-mutable struct uiFontButton
-end
+# end enum ANONYMOUS_15
 
 mutable struct uiColorButton
+end
+
+mutable struct uiForm
+end
+
+const uiAlign = UInt32
+
+# begin enum ANONYMOUS_16
+const ANONYMOUS_16 = UInt32
+const uiAlignFill = (UInt32)(0)
+const uiAlignStart = (UInt32)(1)
+const uiAlignCenter = (UInt32)(2)
+const uiAlignEnd = (UInt32)(3)
+# end enum ANONYMOUS_16
+
+const uiAt = UInt32
+
+# begin enum ANONYMOUS_17
+const ANONYMOUS_17 = UInt32
+const uiAtLeading = (UInt32)(0)
+const uiAtTop = (UInt32)(1)
+const uiAtTrailing = (UInt32)(2)
+const uiAtBottom = (UInt32)(3)
+# end enum ANONYMOUS_17
+
+mutable struct uiGrid
+end
+
+mutable struct uiImage
+end
+
+mutable struct uiTableValue
+end
+
+const uiTableValueType = UInt32
+
+# begin enum ANONYMOUS_18
+const ANONYMOUS_18 = UInt32
+const uiTableValueTypeString = (UInt32)(0)
+const uiTableValueTypeImage = (UInt32)(1)
+const uiTableValueTypeInt = (UInt32)(2)
+const uiTableValueTypeColor = (UInt32)(3)
+# end enum ANONYMOUS_18
+
+mutable struct uiTableModel
+end
+
+mutable struct uiTableModelHandler
+	NumColumns::Ptr{Nothing}
+	ColumnType::Ptr{Nothing}
+	NumRows::Ptr{Nothing}
+	CellValue::Ptr{Nothing}
+	SetCellValue::Ptr{Nothing}
+end
+
+mutable struct uiTableTextColumnOptionalParams
+	ColorModelColumn::Cint
+end
+
+mutable struct uiTableParams
+	Model::Ptr{uiTableModel}
+	RowBackgroundColorModelColumn::Cint
+end
+
+mutable struct uiTable
 end

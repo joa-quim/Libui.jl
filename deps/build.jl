@@ -1,6 +1,6 @@
 using BinDeps
 @static if VERSION <= v"0.7-"
-    import Compat: Sys
+	import Compat: Sys
 end
 
 @BinDeps.setup
@@ -8,6 +8,8 @@ end
 const libui = library_dependency("libui")
 const libuiVer = "4"
 const libuiFilebase = "alpha$(libuiVer)"
+
+const prefix = joinpath(BinDeps.depsdir(libui), "usr")
 
 provides(Sources,
          URI("http://w3.ualg.pt/%7Ejluis/t/$(libuiFilebase).tar.gz"),
@@ -26,21 +28,21 @@ else
 end
 
 const binaryNameTarget = if Sys.islinux()
-    "libui.so"
+	"libui.so"
 elseif Sys.isapple()
-    "libui.dylib"
+	"libui.dylib"
 elseif Sys.iswindows()
-    "libui.dll"
+	"libui.dll"
 else
-    error("Platform not supported.")
+	error("Platform not supported.")
 end
 
 provides(SimpleBuild,
-         (@build_steps begin
-          GetSources(libui)
-          CreateDirectory(joinpath(prefix, "lib"))
-          `cp $(srcpath) $(joinpath(prefix, "lib", binaryNameTarget))`
-          end
-          ), libui)
+		 (@build_steps begin
+		  GetSources(libui)
+		  CreateDirectory(joinpath(prefix, "lib"))
+		  `cp -v $(srcpath) $(joinpath(prefix, "lib", binaryNameTarget))`
+		  end
+		  ), libui)
 
 @BinDeps.install Dict(:libui => :libui)
