@@ -4,6 +4,7 @@ GUI building, using the `libui` library: [https://github.com/andlabs/libui](http
 <br/>
 
 [![Build Status](https://travis-ci.org/joa-quim/Libui.jl.svg?branch=master)](https://travis-ci.org/joa-quim/Libui.jl)
+[![Build status](https://ci.appveyor.com/api/projects/status/27dcdjwi0hawmpcd/branch/master?svg=true)](https://ci.appveyor.com/project/joa-quim/libui-jl/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/joa-quim/Libui.jl/badge.svg?branch=master)](https://coveralls.io/github/joa-quim/Libui.jl?branch=master)
 [![codecov.io](http://codecov.io/github/joa-quim/Libui.jl/coverage.svg?branch=master)](http://codecov.io/github/joa-quim/Libui.jl?branch=master)
 
