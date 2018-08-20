@@ -31,15 +31,15 @@ function uiQuit()
 end
 
 function uiQueueMain(f, data)
-	ccall((:uiQueueMain, libui), Nothing, (Ptr{Void}, Ptr{Void}), f, data)
+	ccall((:uiQueueMain, libui), Nothing, (Ptr{Nothing}, Ptr{Nothing}), f, data)
 end
 
 function uiTimer(milliseconds::Integer, f, data)
-	ccall((:uiTimer, libui), Nothing, (Cint, Ptr{Void}, Ptr{Void}), milliseconds, f, data)
+	ccall((:uiTimer, libui), Nothing, (Cint, Ptr{Nothing}, Ptr{Nothing}), milliseconds, f, data)
 end
 
 function uiOnShouldQuit(f, data)
-	ccall((:uiOnShouldQuit, libui), Nothing, (Ptr{Void}, Ptr{Void}), f, data)
+	ccall((:uiOnShouldQuit, libui), Nothing, (Ptr{Nothing}, Ptr{Nothing}), f, data)
 end
 
 function uiFreeText(text)
@@ -135,11 +135,11 @@ function uiWindowSetFullscreen(w, fullscreen::Integer)
 end
 
 function uiWindowOnContentSizeChanged(w, f, data)
-	ccall((:uiWindowOnContentSizeChanged, libui), Nothing, (Ptr{uiWindow}, Ptr{Void}, Ptr{Void}), w, f, data)
+	ccall((:uiWindowOnContentSizeChanged, libui), Nothing, (Ptr{uiWindow}, Ptr{Nothing}, Ptr{Nothing}), w, f, data)
 end
 
 function uiWindowOnClosing(w, f, data)
-	ccall((:uiWindowOnClosing, libui), Nothing, (Ptr{uiWindow}, Ptr{Void}, Ptr{Void}), w, f, data)
+	ccall((:uiWindowOnClosing, libui), Nothing, (Ptr{uiWindow}, Ptr{Nothing}, Ptr{Nothing}), w, f, data)
 end
 
 function uiWindowBorderless(w)
@@ -175,7 +175,7 @@ function uiButtonSetText(b, text)
 end
 
 function uiButtonOnClicked(b, f, data)
-	ccall((:uiButtonOnClicked, libui), Nothing, (Ptr{uiButton}, Ptr{Void}, Ptr{Void}), b, f, data)
+	ccall((:uiButtonOnClicked, libui), Nothing, (Ptr{uiButton}, Ptr{Nothing}, Ptr{Nothing}), b, f, data)
 end
 
 function uiNewButton(text)
@@ -215,7 +215,7 @@ function uiCheckboxSetText(c, text)
 end
 
 function uiCheckboxOnToggled(c, f, data)
-	ccall((:uiCheckboxOnToggled, libui), Nothing, (Ptr{uiCheckbox}, Ptr{Void}, Ptr{Void}), c, f, data)
+	ccall((:uiCheckboxOnToggled, libui), Nothing, (Ptr{uiCheckbox}, Ptr{Nothing}, Ptr{Nothing}), c, f, data)
 end
 
 function uiCheckboxChecked(c)
@@ -239,7 +239,7 @@ function uiEntrySetText(e, text)
 end
 
 function uiEntryOnChanged(e, f, data)
-	ccall((:uiEntryOnChanged, libui), Nothing, (Ptr{uiEntry}, Ptr{Void}, Ptr{Void}), e, f, data)
+	ccall((:uiEntryOnChanged, libui), Nothing, (Ptr{uiEntry}, Ptr{Nothing}, Ptr{Nothing}), e, f, data)
 end
 
 function uiEntryReadOnly(e)
@@ -335,7 +335,7 @@ function uiSpinboxSetValue(s, value::Integer)
 end
 
 function uiSpinboxOnChanged(s, f, data)
-	ccall((:uiSpinboxOnChanged, libui), Nothing, (Ptr{uiSpinbox}, Ptr{Void}, Ptr{Void}), s, f, data)
+	ccall((:uiSpinboxOnChanged, libui), Nothing, (Ptr{uiSpinbox}, Ptr{Nothing}, Ptr{Nothing}), s, f, data)
 end
 
 function uiNewSpinbox(min::Integer, max::Integer)
@@ -351,7 +351,7 @@ function uiSliderSetValue(s, value::Integer)
 end
 
 function uiSliderOnChanged(s, f, data)
-	ccall((:uiSliderOnChanged, libui), Nothing, (Ptr{uiSlider}, Ptr{Void}, Ptr{Void}), s, f, data)
+	ccall((:uiSliderOnChanged, libui), Nothing, (Ptr{uiSlider}, Ptr{Nothing}, Ptr{Nothing}), s, f, data)
 end
 
 function uiNewSlider(min::Integer, max::Integer)
@@ -391,7 +391,7 @@ function uiComboboxSetSelected(c, n::Integer)
 end
 
 function uiComboboxOnSelected(c, f, data)
-	ccall((:uiComboboxOnSelected, libui), Nothing, (Ptr{uiCombobox}, Ptr{Void}, Ptr{Void}), c, f, data)
+	ccall((:uiComboboxOnSelected, libui), Nothing, (Ptr{uiCombobox}, Ptr{Nothing}, Ptr{Nothing}), c, f, data)
 end
 
 function uiNewCombobox()
@@ -411,7 +411,7 @@ function uiEditableComboboxSetText(c, text)
 end
 
 function uiEditableComboboxOnChanged(c, f, data)
-	ccall((:uiEditableComboboxOnChanged, libui), Nothing, (Ptr{uiEditableCombobox}, Ptr{Void}, Ptr{Void}), c, f, data)
+	ccall((:uiEditableComboboxOnChanged, libui), Nothing, (Ptr{uiEditableCombobox}, Ptr{Nothing}, Ptr{Nothing}), c, f, data)
 end
 
 function uiNewEditableCombobox()
@@ -431,7 +431,7 @@ function uiRadioButtonsSetSelected(r, n::Integer)
 end
 
 function uiRadioButtonsOnSelected(r, f, data)
-	ccall((:uiRadioButtonsOnSelected, libui), Nothing, (Ptr{uiRadioButtons}, Ptr{Void}, Ptr{Void}), r, f, data)
+	ccall((:uiRadioButtonsOnSelected, libui), Nothing, (Ptr{uiRadioButtons}, Ptr{Nothing}, Ptr{Nothing}), r, f, data)
 end
 
 function uiNewRadioButtons()
@@ -439,15 +439,15 @@ function uiNewRadioButtons()
 end
 
 function uiDateTimePickerTime(d, time)
-	ccall((:uiDateTimePickerTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}), d, time)
+	ccall((:uiDateTimePickerTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Nothing}), d, time)
 end
 
 function uiDateTimePickerSetTime(d, time)
-	ccall((:uiDateTimePickerSetTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}), d, time)
+	ccall((:uiDateTimePickerSetTime, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Nothing}), d, time)
 end
 
 function uiDateTimePickerOnChanged(d, f, data)
-	ccall((:uiDateTimePickerOnChanged, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Void}, Ptr{Void}), d, f, data)
+	ccall((:uiDateTimePickerOnChanged, libui), Nothing, (Ptr{uiDateTimePicker}, Ptr{Nothing}, Ptr{Nothing}), d, f, data)
 end
 
 function uiNewDateTimePicker()
@@ -475,7 +475,7 @@ function uiMultilineEntryAppend(e, text)
 end
 
 function uiMultilineEntryOnChanged(e, f, data)
-	ccall((:uiMultilineEntryOnChanged, libui), Nothing, (Ptr{uiMultilineEntry}, Ptr{Void}, Ptr{Void}), e, f, data)
+	ccall((:uiMultilineEntryOnChanged, libui), Nothing, (Ptr{uiMultilineEntry}, Ptr{Nothing}, Ptr{Nothing}), e, f, data)
 end
 
 function uiMultilineEntryReadOnly(e)
@@ -503,7 +503,7 @@ function uiMenuItemDisable(m)
 end
 
 function uiMenuItemOnClicked(m, f, data)
-	ccall((:uiMenuItemOnClicked, libui), Nothing, (Ptr{uiMenuItem}, Ptr{Void}, Ptr{Void}), m, f, data)
+	ccall((:uiMenuItemOnClicked, libui), Nothing, (Ptr{uiMenuItem}, Ptr{Nothing}, Ptr{Nothing}), m, f, data)
 end
 
 function uiMenuItemChecked(m)
@@ -791,7 +791,7 @@ function uiOpenTypeFeaturesGet(otf, a::UInt8, b::UInt8, c::UInt8, d::UInt8, valu
 end
 
 function uiOpenTypeFeaturesForEach(otf, f::uiOpenTypeFeaturesForEachFunc, data)
-	ccall((:uiOpenTypeFeaturesForEach, libui), Nothing, (Ptr{uiOpenTypeFeatures}, uiOpenTypeFeaturesForEachFunc, Ptr{Void}), otf, f, data)
+	ccall((:uiOpenTypeFeaturesForEach, libui), Nothing, (Ptr{uiOpenTypeFeatures}, uiOpenTypeFeaturesForEachFunc, Ptr{Nothing}), otf, f, data)
 end
 
 function uiNewFeaturesAttribute(otf)
@@ -835,7 +835,7 @@ function uiAttributedStringSetAttribute(s, a, start::Csize_t, _end::Csize_t)
 end
 
 function uiAttributedStringForEachAttribute(s, f::uiAttributedStringForEachAttributeFunc, data)
-	ccall((:uiAttributedStringForEachAttribute, libui), Nothing, (Ptr{uiAttributedString}, uiAttributedStringForEachAttributeFunc, Ptr{Void}), s, f, data)
+	ccall((:uiAttributedStringForEachAttribute, libui), Nothing, (Ptr{uiAttributedString}, uiAttributedStringForEachAttributeFunc, Ptr{Nothing}), s, f, data)
 end
 
 function uiAttributedStringNumGraphemes(s)
@@ -871,7 +871,7 @@ function uiFontButtonFont(b, desc)
 end
 
 function uiFontButtonOnChanged(b, f, data)
-	ccall((:uiFontButtonOnChanged, libui), Nothing, (Ptr{uiFontButton}, Ptr{Void}, Ptr{Void}), b, f, data)
+	ccall((:uiFontButtonOnChanged, libui), Nothing, (Ptr{uiFontButton}, Ptr{Nothing}, Ptr{Nothing}), b, f, data)
 end
 
 function uiNewFontButton()
@@ -891,7 +891,7 @@ function uiColorButtonSetColor(b, r::Cdouble, g::Cdouble, bl::Cdouble, a::Cdoubl
 end
 
 function uiColorButtonOnChanged(b, f, data)
-	ccall((:uiColorButtonOnChanged, libui), Nothing, (Ptr{uiColorButton}, Ptr{Void}, Ptr{Void}), b, f, data)
+	ccall((:uiColorButtonOnChanged, libui), Nothing, (Ptr{uiColorButton}, Ptr{Nothing}, Ptr{Nothing}), b, f, data)
 end
 
 function uiNewColorButton()
@@ -947,7 +947,7 @@ function uiFreeImage(i)
 end
 
 function uiImageAppend(i, pixels, pixelWidth::Integer, pixelHeight::Integer, byteStride::Integer)
-	ccall((:uiImageAppend, libui), Nothing, (Ptr{uiImage}, Ptr{Void}, Cint, Cint, Cint), i, pixels, pixelWidth, pixelHeight, byteStride)
+	ccall((:uiImageAppend, libui), Nothing, (Ptr{uiImage}, Ptr{Nothing}, Cint, Cint, Cint), i, pixels, pixelWidth, pixelHeight, byteStride)
 end
 
 function uiFreeTableValue(v)
