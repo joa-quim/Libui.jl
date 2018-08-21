@@ -22,10 +22,6 @@ function uiMainSteps()
 	ccall((:uiMainSteps, libui), Nothing, ())
 end
 
-function uiMainSteps()
-	ccall((:uiMainSteps,libui),Nothing,())
-end
-
 function uiMainStep(wait::Integer)
 	ccall((:uiMainStep, libui), Cint, (Cint,), wait)
 end

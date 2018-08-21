@@ -33,14 +33,14 @@ before_script:
   - "export DISPLAY=:99.0"
   - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then GUITESTCMD="xvfb-run julia"; else GUITESTCMD="julia"; fi
   - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then ( sudo Xvfb :99 -ac -screen 0 1024x768x8; echo ok; sleep 3 )& fi
-  - julia -e 'Pkg.clone(pwd()); Pkg.build("Libui");'
+  - julia -e 'VERSION >= v"0.7-" && using Pkg; Pkg.clone(pwd()); Pkg.build("Libui");'
 
 ##uncomment the following lines to override the default test script
 script:
-  - ${GUITESTCMD} -e 'Pkg.test("Libui"; coverage=true)'
+  - ${GUITESTCMD} -e 'VERSION >= v"0.7-" && using Pkg; Pkg.test("Libui"; coverage=true)'
 
 after_success:
   # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("Libui")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  - julia -e 'VERSION >= v"0.7-" && using Pkg; cd(Pkg.dir("Libui")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("Libui")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'VERSION >= v"0.7-" && using Pkg; cd(Pkg.dir("Libui")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
