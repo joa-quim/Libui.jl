@@ -8,6 +8,11 @@ else
 	error("Libui not properly installed. Please run Pkg.build(\"Libui\")")
 end
 
+@static if VERSION < v"0.7-"
+	using Compat: @cfunction
+end
+
+
 export
 	uiBoxAppend,
 	uiBoxSetPadded,
@@ -107,7 +112,7 @@ end
 
 Pointer to c-callable version of [`shouldQuit`](@ref)
 """
-const shouldQuitPtr = cfunction(shouldQuit, Ptr{Nothing}, (Ptr{uiWindow},))
+const shouldQuitPtr = @cfunction(shouldQuit, Ptr{Nothing}, (Ptr{uiWindow},))
 
 # ---------------------------------------------------------------------------------------------
 """
@@ -125,7 +130,7 @@ end
 
 Pointer to c-callable version of (`onClosing`)[@ref]
 """
-const onClosingPtr = cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},Ptr{Nothing}))
+const onClosingPtr = @cfunction(onClosing, Ptr{Nothing}, (Ptr{uiWindow},Ptr{Nothing}))
 
 """
 	newWindow(args...)
