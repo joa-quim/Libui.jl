@@ -1,8 +1,43 @@
 using Libui
 @static if VERSION < v"0.7-"
-	using Compat: Nothing
+	using Compat: Nothing, @cfunction
 end
 
+
+# ---------------------------------------------------------------------------------------------
+function onSpinboxChanged(spinbox::Ptr{uiSpinbox})
+	update(uiSpinboxValue(spinbox))
+	return nothing
+end
+
+# ---------------------------------------------------------------------------------------------
+function onSliderChanged(slider::Ptr{uiSlider})
+	update(uiSliderValue(slider))
+	return nothing
+end
+
+# ---------------------------------------------------------------------------------------------
+function openClicked(mainwin::Ptr{uiWindow})
+	filename = uiOpenFile(mainwin)
+	if (filename == C_NULL)
+		uiMsgBoxError(mainwin, "No file selected", "Don't be alarmed!")
+		return
+	end
+	uiMsgBox(mainwin, "File selected", filename)
+	uiFreeText(filename)
+	return nothing
+end
+
+# ---------------------------------------------------------------------------------------------
+function saveClicked(mainwin::Ptr{uiWindow})
+	filename = uiSaveFile(mainwin)
+	if (filename == C_NULL)
+		uiMsgBoxError(mainwin, "No file selected", "Don't be alarmed!")
+		return
+	end
+	uiMsgBox(mainwin, "File selected (don't worry, it's still there)", filename)
+	uiFreeText(filename)
+end
 
 function controlgallery()
 	progressbar = uiNewProgressBar()
@@ -17,9 +52,9 @@ function controlgallery()
 
 	menu = uiNewMenu("File")
 	item = uiMenuAppendItem(menu, "Open")
-	uiMenuItemOnClicked(item, cfunction(openClicked, Nothing, (Ptr{uiWindow},)), C_NULL)
+	uiMenuItemOnClicked(item, @cfunction(openClicked, Nothing, (Ptr{uiWindow},)), C_NULL)
 	item = uiMenuAppendItem(menu, "Save")
-	uiMenuItemOnClicked(item, cfunction(saveClicked, Nothing, (Ptr{uiWindow},)), C_NULL)
+	uiMenuItemOnClicked(item, @cfunction(saveClicked, Nothing, (Ptr{uiWindow},)), C_NULL)
 	item = uiMenuAppendQuitItem(menu)
 
 	menu = uiNewMenu("Edit")
@@ -79,10 +114,10 @@ function controlgallery()
 	uiBoxSetPadded(inner, 1)
 	uiGroupSetChild(group, uiControl_(inner))
 
-	uiSpinboxOnChanged(spinbox, cfunction(onSpinboxChanged, Nothing, (Ptr{uiSpinbox},)), C_NULL)
+	uiSpinboxOnChanged(spinbox, @cfunction(onSpinboxChanged, Nothing, (Ptr{uiSpinbox},)), C_NULL)
 	uiBoxAppend(inner, uiControl_(spinbox), 0)
 
-	uiSliderOnChanged(slider, cfunction(onSliderChanged, Nothing, (Ptr{uiSlider},)), C_NULL)
+	uiSliderOnChanged(slider, @cfunction(onSliderChanged, Nothing, (Ptr{uiSlider},)), C_NULL)
 	uiBoxAppend(inner, uiControl_(slider), 0)
 
 	uiBoxAppend(inner, uiControl_(progressbar), 0)
@@ -124,42 +159,6 @@ function controlgallery()
 	Libui.uiMainSteps()
 	Libui.uiMainStep(0)
 	println("after uiMainStep()")
-end
-
-
-# ---------------------------------------------------------------------------------------------
-function onSpinboxChanged(spinbox::Ptr{uiSpinbox})
-	update(uiSpinboxValue(spinbox))
-	return nothing
-end
-
-# ---------------------------------------------------------------------------------------------
-function onSliderChanged(slider::Ptr{uiSlider})
-	update(uiSliderValue(slider))
-	return nothing
-end
-
-# ---------------------------------------------------------------------------------------------
-function openClicked(mainwin::Ptr{uiWindow})
-	filename = uiOpenFile(mainwin)
-	if (filename == C_NULL)
-		uiMsgBoxError(mainwin, "No file selected", "Don't be alarmed!")
-		return
-	end
-	uiMsgBox(mainwin, "File selected", filename)
-	uiFreeText(filename)
-	return nothing
-end
-
-# ---------------------------------------------------------------------------------------------
-function saveClicked(mainwin::Ptr{uiWindow})
-	filename = uiSaveFile(mainwin)
-	if (filename == C_NULL)
-		uiMsgBoxError(mainwin, "No file selected", "Don't be alarmed!")
-		return
-	end
-	uiMsgBox(mainwin, "File selected (don't worry, it's still there)", filename)
-	uiFreeText(filename)
 end
 
 Libui.with_ui(controlgallery)
